@@ -1,4 +1,4 @@
-from flask import Flask
+from flask import Flask, render_template
 from flask_sqlalchemy import SQLAlchemy
 from flask_login import LoginManager
 import os
@@ -25,7 +25,9 @@ def create_app():
         user = User.query.get(int(user_id))
         return user
 
-
+    @app.errorhandler(404)
+    def page_not_found(error):
+        return render_template('404.html'), 404
 
     from app.routes import auth_routes
     app.register_blueprint(auth_routes.bp)
