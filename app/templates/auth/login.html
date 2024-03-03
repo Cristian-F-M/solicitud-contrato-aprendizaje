@@ -12,25 +12,24 @@ Search CM - login
 <div class="container-c-form">
     <div class="containter-form">
         <header>
-            <h1>User login</h1>
+            <h1 translate="no">User login</h1>
             <div class="container-logo">
-                <img src="{{ url_for('static', filename='images/logo_cm_minimalista.jpeg') }}"
-                    alt="Logo CM">
+                <img src="{{ url_for('static', filename='images/logo_cm_minimalista.jpeg') }}" alt="Logo CM">
             </div>
         </header>
 
-        <form action="{{ url_for('auth.login') }}" method="POST" autocomplete="off">
+        <form action="{{ url_for('auth.login') }}" method="POST" autocomplete="off" translate="no">
             <div class="container-input">
-                <input name="user_email" type="email" required>
-                <label for="">Email</label>
+                <input id="user_email" name="user_email" type="email" required>
+                <label for="user_email">Email</label>
             </div>
             <div class="container-input">
-                <input name="user_password" type="password" required>
-                <label for="">Password</label>
+                <input id="user_password" name="user_password" type="password" required>
+                <label for="user_password">Password</label>
             </div>
             <div class="container-remember">
-                <input type="checkbox">
-                <label for="">Remember me</label>
+                <input id="user_remember" name="user_remember" type="checkbox">
+                <label for="user_remember">Remember me</label>
             </div>
             <div class="container-button">
                 <button>Login</button>

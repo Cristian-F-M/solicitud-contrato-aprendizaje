@@ -7,5 +7,6 @@ from flask import Blueprint, render_template
 bp = Blueprint("user", __name__)
 
 @bp.route('/User/Dashboard')
+@login_required
 def view_dashboard():
     return render_template('user/dashboard.html')
