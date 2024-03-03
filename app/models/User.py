@@ -12,4 +12,4 @@ class User(db.Model):
 
 
     def get_id(self):
-        return self.idUsuario
+        return self.user_id
