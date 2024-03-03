@@ -1,0 +1,44 @@
+{% extends "base_template.html" %}
+
+{% block title %}
+Search CM - login
+{% endblock title %}
+
+{% block accessories %}
+<link rel="stylesheet" href="{{ url_for('static', filename='css/form.css') }}">
+{% endblock accessories %}
+
+{% block content %}
+<div class="container-c-form">
+    <div class="containter-form">
+        <header>
+            <h1>Login</h1>
+            <div class="container-logo">
+                <img src="{{ url_for('static', filename='images/logo_cm_minimalista.jpeg') }}"
+                    alt="Logo CM">
+            </div>
+        </header>
+
+        <form action="{{ url_for('auth.login') }}" method="POST" autocomplete="off">
+            <div class="container-input">
+                <input name="user_email" type="email">
+                <label for="">Email</label>
+            </div>
+            <div class="container-input">
+                <input name="user_password" type="password">
+                <label for="">Password</label>
+            </div>
+            <div class="container-remember">
+                <input type="checkbox">
+                <label for="">Remember</label>
+            </div>
+            <div class="container-button">
+                <button>Login</button>
+            </div>
+            <div class="container-actions">
+                <a href="{{ url_for('auth.view_forgot_password') }}">Forgot password?</a>
+            </div>
+        </form>
+    </div>
+</div>
+{% endblock content %}
