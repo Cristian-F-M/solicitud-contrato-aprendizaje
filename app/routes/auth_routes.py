@@ -33,7 +33,7 @@ def login():
     
     if not bcrypt.check_password_hash(password=user_password, pw_hash=user.user_password):
         flash(['mistake', 'Invalid credentials', 'flash'])
-        return redirect(url_for('aurh.view_login'))
+        return redirect(url_for('auth.view_login'))
     
     login_user(user)
     
