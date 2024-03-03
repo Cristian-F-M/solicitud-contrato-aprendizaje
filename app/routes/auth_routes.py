@@ -37,7 +37,7 @@ def login():
     
     login_user(user)
     
-    if user.user_id > 1:
-        return redirect(url_for('administrator.dashboard'))
+    if user.user_rol_id > 1:
+        return redirect(url_for('administrator.view_dashboard'))
     
-    return redirect(url_for('user.dashboard'))
+    return redirect(url_for('user.view_dashboard'))
