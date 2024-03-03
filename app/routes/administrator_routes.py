@@ -6,6 +6,6 @@ from flask import Blueprint, render_template
 
 bp = Blueprint("administrator", __name__)
 
-@bp.route('/Administrato/Dashboard')
+@bp.route('/Administrator/Dashboard')
 def view_dashboard():
-    return render_template('administrador/dashboard.html')
+    return render_template('administrator/dashboard.html')
