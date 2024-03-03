@@ -15,12 +15,12 @@ bcrypt = Bcrypt()
 
 @bp.route("/")
 def view_login():
-    return render_template("login.html")
+    return render_template("auth/login.html")
 
 
 @bp.route("/Forgot-password")
 def view_forgot_password():
-    return render_template("forgot-password.html")
+    return render_template("auth/forgot-password.html")
 
 
 @bp.route("/Login", methods=['POST'])
