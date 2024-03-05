@@ -1,0 +1,98 @@
+{% extends "base_template.html" %}
+
+
+{% block title %}
+- Dashboard
+{% endblock title %}
+
+
+{% block accessories %}
+<link rel="stylesheet" href="{{ url_for('static', filename='css/user_dashboard.css') }}">
+<link rel="stylesheet" href="{{ url_for('static', filename='css/icons/bootstrap-icons.min.css') }}">
+<script src="{{ url_for('static', filename='js/user_dashboard.js') }}" defer></script>
+{% endblock accessories %}
+
+
+{% block content %}
+<header class="header">
+    <div class="container-logo">
+        <img src="{{ url_for('static', filename='images/logo_cm_minimalista.jpeg') }}" alt="">
+    </div>
+    <h1>Search CM</h1>
+</header>
+
+<div class="main">
+    <div class="container-left-menu">
+        <nav class="webs">
+            <ul id="nav-web-caprendizaje">
+                <li>
+                    <a href="" class="container-name-ico">
+                        <div class="container-name">
+                            <p href="">CAprendizaje - SGVA</p>
+                        </div>
+                        <div class="container-ico">
+                            <i class="bi bi-chevron-down"></i>
+                        </div>
+                    </a>
+
+                    <div class="container-actions">
+                        <ul>
+                            <li>
+                                <a href="">
+                                    Search emails
+                                    <div class="container-icon">
+                                        <i class="bi bi-search"></i>
+                                    </div>
+                                </a>
+
+                            </li>
+                            <li>
+                                <a href="">
+                                    Send mails
+                                    <div class="container-icon">
+                                        <i class="bi bi-send"></i>
+                                    </div>
+                                </a>
+
+                            </li>
+                            <li>
+                                <a href="">
+                                    Settings
+                                    <div class="container-icon">
+                                        <i class="bi bi-gear"></i>
+                                    </div>
+                                </a>
+
+                            </li>
+                        </ul>
+                    </div>
+                </li>
+
+                <li>
+                    <a href="/auth.logout">
+                        <i class="bi bi-box-arrow-left"></i>
+                        Logout
+                    </a>
+                </li>
+            </ul>
+
+            <ul id="nav-min">
+                <li><img src="{{ url_for('static', filename='images/logo-SENA.jpg') }}" alt="Logo SGVA"></li>
+            </ul>
+        </nav>
+        <div class="open-close-let-menu">
+            <i id="i-open-close-menu" class="bi bi-chevron-compact-left"></i>
+        </div>
+    </div>
+
+
+    <div class="container-web">
+        {% block content_dashboard %}
+        POR FAVOR SELECCIONA UN OPCIÓN PARA VER EL CONTENIDO
+        {% endblock content_dashboard %}
+    </div>
+
+
+</div>
+
+{% endblock content %}
