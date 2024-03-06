@@ -7,12 +7,14 @@ const iOpenCloseMenu = document.getElementById('i-open-close-menu')
 const leftMenu = document.querySelector('.container-left-menu')
 const minMenuLi = document.querySelector('#nav-min li')
 const cookieName = "minMenu"
-const cookieValue = document.cookie
-    .split(";")
-    .find((cookie) => cookie.startsWith(cookieName + "="))
-    .split("=")[1];
+const cookies = document.cookie.split(';')
+const cookieValue = parseBoolean(cookies.find((element) => element.includes(' minMenu'))?.split('=')[1]);
 
 main.style.setProperty('--height-header', `${header.clientHeight}px`)
+
+
+cookieMenu()
+
 
 
 containersNameIco.forEach(nameIco => {
@@ -60,14 +62,11 @@ function openMinMenu() {
     styleIcoMenu()
 }
 
-
 function saveCookieAttributeMenu() {
-    document.cookie = `${cookieName}=${leftMenu.hasAttribute('min')}`;
-    console.log("----------------------------");
-    console.log(`${cookieName}=${leftMenu.hasAttribute('min')}`);
-    console.log(document.cookie);
+    let cookieMenu = `${cookieName}=${leftMenu.hasAttribute('min')}; expires=${cookieExpirationDate()}; path=/`
+    console.log(cookieMenu);
+    document.cookie = cookieMenu;
 }
-
 
 function styleIcoMenu() {
     if (leftMenu.hasAttribute('min')) {
@@ -77,16 +76,17 @@ function styleIcoMenu() {
     }
 }
 
-
-cookieMenu()
-
 function cookieMenu() {
-    // if (cookieValue == 'true') {
-    //     openMinMenu()
-    // } else if (cookieValue == 'false') {
-    //     openLeftMenu()
-    // }
+    cookieValue ? openMinMenu() : openLeftMenu()
+}
 
-    (cookieValue == 'true') ? openMinMenu() : openLeftMenu() 
+function cookieExpirationDate(days = 7) {
+    let currentDate = new Date()
+    currentDate.setTime(currentDate.getTime() + (days * 24 * 60 * 60 * 1000));
+    let fechaExpiracion = currentDate.toUTCString();
+    return fechaExpiracion
+}
 
+function parseBoolean(string) {
+    return string === "true";
 }
