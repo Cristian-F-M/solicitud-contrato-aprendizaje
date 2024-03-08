@@ -7,10 +7,7 @@ const iOpenCloseMenu = document.getElementById('i-open-close-menu')
 const leftMenu = document.querySelector('.container-left-menu')
 const minMenuLi = document.querySelector('#nav-min li')
 const cookieName = "minMenu"
-const cookieValue = document.cookie
-    .split(";")
-    .find((cookie) => cookie.startsWith(cookieName + "="))
-    .split("=")[1];
+
 
 main.style.setProperty('--height-header', `${header.clientHeight}px`)
 
@@ -81,12 +78,17 @@ function styleIcoMenu() {
 cookieMenu()
 
 function cookieMenu() {
-    // if (cookieValue == 'true') {
-    //     openMinMenu()
-    // } else if (cookieValue == 'false') {
-    //     openLeftMenu()
-    // }
+    let cookieValue = getCookie(cookieName);
 
-    (cookieValue == 'true') ? openMinMenu() : openLeftMenu() 
+    cookieValue == 'true' ? openMinMenu() : openLeftMenu()
 
+}
+
+
+function getCookie(cookieName) {
+    let cookieValue = document.cookie
+        .split(";")
+        .find((cookie) => cookie.startsWith(cookieName + "="))?.split("=")[1];
+
+    return cookieValue
 }
