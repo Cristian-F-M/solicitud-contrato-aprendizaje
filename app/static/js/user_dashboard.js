@@ -7,6 +7,7 @@ const iOpenCloseMenu = document.getElementById('i-open-close-menu')
 const leftMenu = document.querySelector('.container-left-menu')
 const minMenuLi = document.querySelector('#nav-min li')
 const cookieName = "minMenu"
+const socket = io();
 
 
 main.style.setProperty('--height-header', `${header.clientHeight}px`)
@@ -60,9 +61,6 @@ function openMinMenu() {
 
 function saveCookieAttributeMenu() {
     document.cookie = `${cookieName}=${leftMenu.hasAttribute('min')}`;
-    console.log("----------------------------");
-    console.log(`${cookieName}=${leftMenu.hasAttribute('min')}`);
-    console.log(document.cookie);
 }
 
 
@@ -92,3 +90,22 @@ function getCookie(cookieName) {
 
     return cookieValue
 }
+
+
+
+socket.on('connect', () => {
+    console.log("Conectado")
+
+
+    // socket.on('rsCorreos', data => {}) // <-- Recibir
+
+    // socket.on('msj', (msj) => {
+    //     console.log(msj)
+    // })
+})
+
+
+
+// function msj() {
+//     socket.emit('msj', 'mensaje')
+// }
