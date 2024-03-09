@@ -9,8 +9,14 @@ const minMenuLi = document.querySelector('#nav-min li')
 const cookieName = "minMenu"
 const socket = io();
 
+const cookies = document.cookie.split(';')
+const cookieValue = parseBoolean(cookies.find((element) => element.includes(' minMenu'))?.split('=')[1]);
 
 main.style.setProperty('--height-header', `${header.clientHeight}px`)
+
+
+cookieMenu()
+
 
 
 containersNameIco.forEach(nameIco => {
@@ -58,11 +64,11 @@ function openMinMenu() {
     styleIcoMenu()
 }
 
-
 function saveCookieAttributeMenu() {
-    document.cookie = `${cookieName}=${leftMenu.hasAttribute('min')}`;
+    let cookieMenu = `${cookieName}=${leftMenu.hasAttribute('min')}; expires=${cookieExpirationDate()}; path=/`
+    console.log(cookieMenu);
+    document.cookie = cookieMenu;
 }
-
 
 function styleIcoMenu() {
     if (leftMenu.hasAttribute('min')) {
@@ -72,21 +78,18 @@ function styleIcoMenu() {
     }
 }
 
-
-cookieMenu()
-
 function cookieMenu() {
     let cookieValue = getCookie(cookieName);
 
-    cookieValue == 'true' ? openMinMenu() : openLeftMenu()
+    cookieValue ? openMinMenu() : openLeftMenu()
 
 }
 
 
 function getCookie(cookieName) {
     let cookieValue = document.cookie
-        .split(";")
-        .find((cookie) => cookie.startsWith(cookieName + "="))?.split("=")[1];
+    .split(";")
+    .find((cookie) => cookie.startsWith(cookieName + "="))?.split("=")[1];
 
     return cookieValue
 }
@@ -109,3 +112,16 @@ socket.on('connect', () => {
 // function msj() {
 //     socket.emit('msj', 'mensaje')
 // }
+    cookieValue ? openMinMenu() : openLeftMenu()
+}
+
+function cookieExpirationDate(days = 7) {
+    let currentDate = new Date()
+    currentDate.setTime(currentDate.getTime() + (days * 24 * 60 * 60 * 1000));
+    let fechaExpiracion = currentDate.toUTCString();
+    return fechaExpiracion
+}
+
+function parseBoolean(string) {
+    return string === "true";
+}
