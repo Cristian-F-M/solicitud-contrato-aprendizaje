@@ -112,8 +112,7 @@ socket.on('connect', () => {
 // function msj() {
 //     socket.emit('msj', 'mensaje')
 // }
-    cookieValue ? openMinMenu() : openLeftMenu()
-}
+
 
 function cookieExpirationDate(days = 7) {
     let currentDate = new Date()
