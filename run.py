@@ -4,7 +4,7 @@ import sys
 import webbrowser
 from colorama import Fore, Style
 
-debug = False
+debug = True
 port = 8080
 
 app = create_app()
