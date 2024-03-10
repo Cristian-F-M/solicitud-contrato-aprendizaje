@@ -12,6 +12,14 @@ bp = Blueprint("user", __name__)
 def view_dashboard():
     return render_template('user/dashboard.html')
 
+@bp.route('/User/Settings')
+@login_required
+def view_user_settings():
+    return render_template('user/settings.html')
+
+
+
+
 @socketio.on('msj')
 def msj(msj): # <-- Recibir
     emit('msj', msj) # <-- Enviar
