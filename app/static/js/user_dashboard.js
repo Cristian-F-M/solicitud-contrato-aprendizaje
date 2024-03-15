@@ -16,7 +16,7 @@ main.style.setProperty('--height-header', `${header.clientHeight}px`)
 leftMenu.style.setProperty('--height-header', `${header.clientHeight}px`)
 
 
-cookieMenu()
+
 
 
 
@@ -77,13 +77,6 @@ function styleIcoMenu() {
     } else {
         iOpenCloseMenu.parentNode.setAttribute('show', '')
     }
-}
-
-function cookieMenu() {
-    let cookieValue = getCookie(cookieName);
-
-    cookieValue ? openMinMenu() : openLeftMenu()
-
 }
 
 
