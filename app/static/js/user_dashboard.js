@@ -13,6 +13,7 @@ const cookies = document.cookie.split(';')
 const cookieValue = parseBoolean(cookies.find((element) => element.includes(' minMenu'))?.split('=')[1]);
 
 main.style.setProperty('--height-header', `${header.clientHeight}px`)
+leftMenu.style.setProperty('--height-header', `${header.clientHeight}px`)
 
 
 cookieMenu()
