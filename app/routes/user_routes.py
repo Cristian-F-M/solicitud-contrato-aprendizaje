@@ -5,6 +5,7 @@ from flask import Blueprint, render_template
 from flask_socketio import emit
 
 
+
 bp = Blueprint("user", __name__)
 
 @bp.route('/User/Dashboard')
@@ -12,7 +13,7 @@ bp = Blueprint("user", __name__)
 def view_dashboard():
     return render_template('user/dashboard.html')
 
-@bp.route('/User/Settings')
+@bp.route('/User/Caprendizaje/Settings')
 @login_required
 def view_user_settings():
     return render_template('user/settings.html')
