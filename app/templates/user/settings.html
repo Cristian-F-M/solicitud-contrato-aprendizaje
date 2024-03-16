@@ -1,5 +1,165 @@
 {% extends 'user/base_dashboard.html' %}
+{% set tag = request.args.get('tag') %}
 
-comment {% block content_dashboard %}
-APARECEN LAS CONFIGURACIONES
+
+
+
+{% block other_accessories %}
+<link rel="stylesheet" href="{{ url_for('static', filename='css/settings.css') }}">
+<script src="{{ url_for('static', filename='js/settings.js') }}" defer></script>
+{% endblock other_accessories %}
+
+
+{% block content_dashboard %}
+<div class="nav-settings">
+    <ul>
+        <li><a href="" data-name="Account" {{ (show if tag=='account' else '' ) if tag else 'show' }}>Account
+                settings</a></li>
+        <li><a href="" data-name="Email" {{ 'show' if tag and tag=='email' else '' }}>Email settings</a></li>
+        <li><a href="" data-name="File" {{ 'show' if tag and tag=='file' else '' }}>File settings</a></li>
+        <li><a href="" data-name="BlackList" {{ 'show' if tag and tag=='blacklist' else '' }}>Black list</a></li>
+    </ul>
+</div>
+<div class="main-settings">
+
+    <div class="content account" data-name="Account" {{ (show if tag=='account' else '' ) if tag else 'show' }}>Account
+        settings</div>
+    <div class="content email" data-name="Email" {{ 'show' if tag and tag=='email' else '' }}>
+        <div class="container-title">
+            <h2>Email settings</h2>
+        </div>
+        <div class="container-form">
+            <form action="">
+                <div class="container-input subject ">
+                    <label for="mail-subject">subject</label>
+                    <input type="text" id="mail-subject" required>
+                </div>
+                <div class="container-input mail-content">
+                    <label for="mail-content">content</label>
+                    <textarea id="mail-content" required></textarea>
+                </div>
+
+                <div class="container-button">
+                    <button>Guardar</button>
+                </div>
+            </form>
+        </div>
+
+    </div>
+    <div class="content file scroll-min" data-name="File" {{ 'show' if tag and tag=='file' else '' }}>
+        <div class="container-file-button">
+
+            <div class="container-input">
+                <input type="file" id="input-cv" class="inputfile" accept=".pdf" required />
+                <label for="input-cv">
+                    <svg width="20" height="17" class="i-input-file" viewBox="0 0 20 17">
+                        <path
+                            d="M10 0 4.8 4.9h3.3V10h3.8V4.9h3.3L10 0zm9.3 11.5-3.2-2.1h-2l3.4 2.6H14c-.1 0-.2.1-.2.1l-.8 2.3H7l-.8-2.2c-.1-.1-.1-.2-.2-.2H2.4l3.4-2.6h-2L.6 11.5c-.4.3-.7 1-.6 1.5l.6 3.1c.1.5.7.9 1.2.9h16.3c.6 0 1.1-.4 1.3-.9L20 13c.1-.5-.2-1.2-.7-1.5z" />
+                    </svg>
+                    <span class="i-input-file">Seleccionar archivo</span>
+                </label>
+            </div>
+
+            <div class="container-button">
+                <button>Guardar</button>
+            </div>
+
+        </div>
+
+        <div class="preview-cv" id="preview-cv">
+            <span>Selecciona un archivo para previsualizar</span>
+        </div>
+    </div>
+
+
+
+    <div class="content black scroll-min" data-name="BlackList" {{ 'show' if tag and tag=='blacklist' else '' }}>
+        <div class="container-title">
+            <h2>Black List</h2>
+        </div>
+
+        <div class="container-departments">
+
+            <div class="departament drop-down">
+                <h3>
+                    Boyaca
+                    <i class="bi bi-chevron-down"></i>
+                </h3>
+
+                <div class="container-cities">
+                    <div class="city drop-down">
+                        <h3>
+                            Tunja
+                            <i class="bi bi-chevron-down"></i>
+                        </h3>
+                        <div class="container-emails">
+                            <ul>
+                                <li>Empresa 1</li>
+                                <li>Empresa 2</li>
+                                <li>Empresa 3</li>
+                                <li>Empresa 4</li>
+                            </ul>
+                        </div>
+                    </div>
+                    <div class="city drop-down" >
+                        <h3>
+                            Otra
+                            <i class="bi bi-chevron-down"></i>
+                        </h3>
+                        <div class="container-emails">
+                            <ul>
+                                <li>Empresa 1</li>
+                                <li>Empresa 2</li>
+                                <li>Empresa 3</li>
+                                <li>Empresa 4</li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="departament drop-down ">
+                <h3>
+                    Boyaca
+                    <i class="bi bi-chevron-down"></i>
+                </h3>
+
+                <div class="container-cities">
+                    <div class="city drop-down">
+                        <h3>
+                            Tunja
+                            <i class="bi bi-chevron-down"></i>
+                        </h3>
+                        <div class="container-emails">
+                            <ul>
+                                <li>Empresa 1</li>
+                                <li>Empresa 2</li>
+                                <li>Empresa 3</li>
+                                <li>Empresa 4</li>
+                            </ul>
+                        </div>
+                    </div>
+                    <div class="city drop-down">
+                        <h3>
+                            Otra
+                            <i class="bi bi-chevron-down"></i>
+                        </h3>
+                        <div class="container-emails">
+                            <ul>
+                                <li>Empresa 1</li>
+                                <li>Empresa 2</li>
+                                <li>Empresa 3</li>
+                                <li>Empresa 4</li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+
+
+
+</div>
 {% endblock content_dashboard %}
