@@ -13,9 +13,10 @@ const cookies = document.cookie.split(';')
 const cookieValue = parseBoolean(cookies.find((element) => element.includes(' minMenu'))?.split('=')[1]);
 
 main.style.setProperty('--height-header', `${header.clientHeight}px`)
+leftMenu.style.setProperty('--height-header', `${header.clientHeight}px`)
 
 
-cookieMenu()
+
 
 
 
@@ -42,10 +43,8 @@ containersNameIco.forEach(nameIco => {
 iOpenCloseMenu.addEventListener('click', () => {
     if (!leftMenu.hasAttribute('min')) {
         openMinMenu()
-        saveCookieAttributeMenu()
     } else {
         openLeftMenu()
-        saveCookieAttributeMenu()
     }
 })
 
@@ -64,11 +63,6 @@ function openMinMenu() {
     styleIcoMenu()
 }
 
-function saveCookieAttributeMenu() {
-    let cookieMenu = `${cookieName}=${leftMenu.hasAttribute('min')}; expires=${cookieExpirationDate()}; path=/`
-    console.log(cookieMenu);
-    document.cookie = cookieMenu;
-}
 
 function styleIcoMenu() {
     if (leftMenu.hasAttribute('min')) {
@@ -76,22 +70,6 @@ function styleIcoMenu() {
     } else {
         iOpenCloseMenu.parentNode.setAttribute('show', '')
     }
-}
-
-function cookieMenu() {
-    let cookieValue = getCookie(cookieName);
-
-    cookieValue ? openMinMenu() : openLeftMenu()
-
-}
-
-
-function getCookie(cookieName) {
-    let cookieValue = document.cookie
-    .split(";")
-    .find((cookie) => cookie.startsWith(cookieName + "="))?.split("=")[1];
-
-    return cookieValue
 }
 
 
@@ -114,12 +92,6 @@ socket.on('connect', () => {
 // }
 
 
-function cookieExpirationDate(days = 7) {
-    let currentDate = new Date()
-    currentDate.setTime(currentDate.getTime() + (days * 24 * 60 * 60 * 1000));
-    let fechaExpiracion = currentDate.toUTCString();
-    return fechaExpiracion
-}
 
 function parseBoolean(string) {
     return string === "true";
