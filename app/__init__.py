@@ -3,6 +3,7 @@ from flask_sqlalchemy import SQLAlchemy
 from flask_login import LoginManager
 import os
 from flask_socketio import SocketIO
+import uuid
 
 
 db = SQLAlchemy()
@@ -20,10 +21,11 @@ def create_app():
 
     login_manager.login_view = "auth.view_login"
 
+
     @login_manager.user_loader
     def load_user(user_id):
         from app.models.User import User
-        user = User.query.get(int(user_id))
+        user = User.query.get(uuid.UUID(user_id))
         return user
 
     @app.errorhandler(404)
