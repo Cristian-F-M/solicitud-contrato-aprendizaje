@@ -1,0 +1,22 @@
+<div class="content email" data-name="Email" {{ 'show' if tag and tag=='email' else '' }}>
+    <div class="container-title">
+        <h2>Email settings</h2>
+    </div>
+    <div class="container-form">
+        <form action="">
+            <div class="container-input subject ">
+                <label for="mail-subject">subject</label>
+                <input type="text" id="mail-subject" required>
+            </div>
+            <div class="container-input mail-content">
+                <label for="mail-content">content</label>
+                <textarea id="mail-content" required></textarea>
+            </div>
+
+            <div class="container-button">
+                <button>Guardar</button>
+            </div>
+        </form>
+    </div>
+
+</div>
