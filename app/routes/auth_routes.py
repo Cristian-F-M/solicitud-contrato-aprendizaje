@@ -43,7 +43,6 @@ def login():
 
     user_email = request.form["user_email"]
     user_password = request.form["user_password"]
-    user_remember = True if request.form.get("user_remember") else False
     user = User.query.filter_by(user_email=user_email).first()
 
     if not bcrypt.check_password_hash(
@@ -52,7 +51,7 @@ def login():
         flash(["mistake", "Invalid credentials", "flash"])
         return redirect(url_for("auth.view_login"))
 
-    login_user(user, remember=user_remember)
+    login_user(user)
 
     if user.user_role_id > 1:
         return redirect(url_for("administrator.view_dashboard"))
