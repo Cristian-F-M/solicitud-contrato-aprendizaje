@@ -16,6 +16,8 @@ class User(db.Model, UserMixin):
     user_user_caprendizaje = db.Column(db.String(25), nullable=True)
     user_password_caprendizaje = db.Column(db.String(150), nullable=True)
     user_acept_tyc = db.Column(db.Boolean, nullable=True, default=False)
-
+    user_black_list = db.relationship("Black_list", backref="black_list_user", lazy=True)
+    
+    
     def get_id(self):
         return self.user_id
