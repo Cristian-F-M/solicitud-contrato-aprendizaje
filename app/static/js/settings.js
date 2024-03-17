@@ -5,6 +5,7 @@ const inputs = document.querySelectorAll('input, textarea')
 const previewCv = document.getElementById('preview-cv')
 const inputCv = document.getElementById('input-cv')
 const dropsDown = document.querySelectorAll('.drop-down h3')
+const isPassword = document.querySelectorAll('.i-password')
 
 
 asNavSettings.forEach(a => {
@@ -172,3 +173,13 @@ function getNextDropdowns(currentElement, element) {
 
     return dropdowns;
 }
+
+
+isPassword.forEach(i => {
+    i.addEventListener('click', () => {
+        let input = i.previousElementSibling
+        let type = input.getAttribute('type')
+        i.classList.toggle('bi-eye-slash-fill')
+        input.setAttribute('type', (type === 'password') ? 'text' : 'password')
+    })
+})

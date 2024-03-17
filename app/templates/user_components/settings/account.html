@@ -1,3 +1,32 @@
-<div class="content account" data-name="Account" {{ (show if tag=='account' else '' ) if tag else 'show' }}>
-    Account settings
+<div class="content account scroll-min" data-name="Account" {{ ('show' if tag=='account' else '' ) if tag else 'show' }}>
+    <div class="container-title">
+        <h2>Account settings</h2>
+    </div>
+    <div class="container-form">
+        <form action="">
+            <div class="container-input">
+                <label for="">Email address</label>
+                <input type="email">
+            </div>
+            <div class="container-input">
+                <label for="">Google password</label>
+                <input type="password">
+                <i class="bi bi-eye-fill i-password"></i>
+            </div>
+            <div class="container-input"></div>
+            <div class="container-input"></div>
+            <div class="container-input">
+                <label for="">CAprendizaje user</label>
+                <input type="text">
+            </div>
+            <div class="container-input">
+                <label for="">CAprendizaje password</label>
+                <input type="password">
+                <i class="bi bi-eye-fill i-password"></i>
+            </div>
+            <div class="container-button">
+                <button>Save</button>
+            </div>
+        </form>
+    </div>
 </div>
