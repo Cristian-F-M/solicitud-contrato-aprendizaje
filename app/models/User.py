@@ -13,9 +13,11 @@ class User(db.Model, UserMixin):
     user_role_id = db.Column(
         db.Integer, db.ForeignKey("roles.role_id"), nullable=False, default=1
     )
-    user_user_caprendizaje = db.Column(db.String(25), nullable=True)
-    user_password_caprendizaje = db.Column(db.String(150), nullable=True)
-    user_acept_tyc = db.Column(db.Boolean, nullable=True, default=False)
+    email_address = db.Column(db.String(50), nullable=True)
+    google_password = db.Column(db.String(150), nullable=True)
+    caprendizaje_user = db.Column(db.String(25), nullable=True)
+    caprendizaje_password = db.Column(db.String(150), nullable=True)
+    user_acept_tyc = db.Column(db.Boolean, nullable=True, default=True)
     user_black_list = db.relationship("Black_list", back_populates="black_list_user")
     
     
