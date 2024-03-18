@@ -1,7 +1,7 @@
 from app import db
 import uuid
 
-class Mail:
+class Mail(db.Model):
     __tablename__ = "mails"
     mail_id = db.Column(db.String(50), primary_key=True, default=str(uuid.uuid4()), unique=True)
     mail_subject = db.Column(db.String(100), nullable=False)
