@@ -23,9 +23,9 @@ bcrypt = Bcrypt()
 def home():
     if current_user.is_authenticated:
         if current_user.user_role_id == 2:
-            return redirect(url_for('administrator.view_dashboard'))
-        return redirect(url_for('user.view_dashboard'))
-    return redirect(url_for('auth.view_login'))
+            return redirect(url_for("administrator.view_dashboard"))
+        return redirect(url_for("user.view_dashboard"))
+    return redirect(url_for("auth.view_login"))
 
 
 @bp.route("/Login")
@@ -57,3 +57,10 @@ def login():
         return redirect(url_for("administrator.view_dashboard"))
 
     return redirect(url_for("user.view_dashboard"))
+
+
+@bp.route("/User/Logout")
+def logout():
+    logout_user()
+    flash(["information", "you have logged out", "flash"])
+    return redirect(url_for("auth.home"))
