@@ -40,7 +40,7 @@ class Company:
         company_id=str(uuid.uuid4()),
         company_name=None,
         company_email_address=None,
-        company_department=None,
+        company_departament=None,
         company_city=None,
     ):
 
@@ -50,7 +50,7 @@ class Company:
             "company_id": company_id,
             "company_name": company_name,
             "company_email_address": company_email_address,
-            "company_department": company_department,
+            "company_departament": company_departament,
             "company_city": company_city,
         }
 
