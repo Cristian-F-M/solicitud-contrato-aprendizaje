@@ -54,9 +54,19 @@ inputs.forEach(input => {
 
 inputCv.addEventListener('change', (evt) => {
     let objectPreviewCv = createObjectCv(evt)
+    let span = previewCv.querySelector('span')
+    let file_user = previewCv.querySelector('#file_user')
+
     previewCv.classList.add('object')
-    previewCv.removeChild(previewCv.querySelector('span'))
     previewCv.appendChild(objectPreviewCv)
+
+    
+    if (span) {
+        span.remove()
+    }
+    if (file_user) {
+        file_user.remove()
+    }
 })
 
 
@@ -89,10 +99,6 @@ dropsDown.forEach(dropdown => {
 })
 
 
-
-
-
-
 function toggleDropdownDepartament(containerDropdown, dropdown) {
     let content = containerDropdown.querySelector('.container-cities')
     let marginTopContent = getStyleComputed(content, "margin-top")
@@ -121,20 +127,9 @@ function toggleDropdownCity(containerDropdown, dropdown) {
     containerDepartament.style.maxHeight = `${maxHeightContainer + contentCities.offsetHeight + marginTopContentCities + dropdownDepartament.offsetHeight}px`
 }
 
-
-
-
-
-
-
 function getStyleComputed(element, property) {
     return parseInt(window.getComputedStyle(element, null).getPropertyValue(property))
 }
-
-
-
-
-
 
 function resetDropdownsLocation(containerDropdown) {
     let containerDepartaments = containerDropdown.parentNode

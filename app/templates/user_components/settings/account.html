@@ -1,27 +1,28 @@
-<div class="content account scroll-min" data-name="Account" {{ ('show' if tag=='account' else '' ) if tag else 'show' }}>
+<div class="content account scroll-min" data-name="Account" {{ ('show' if tag=='account' else '' ) if tag else 'show'
+    }}>
     <div class="container-title">
         <h2>Account settings</h2>
     </div>
     <div class="container-form">
-        <form action="">
+        <form action="{{ url_for('user.save_account') }}" method="POST">
             <div class="container-input">
                 <label for="">Email address</label>
-                <input type="email">
+                <input type="email" name="email_address" value="{{ current_user.email_address }}" required>
             </div>
             <div class="container-input">
                 <label for="">Google password</label>
-                <input type="password">
+                <input type="password" name="google_password" value="{{ current_user.google_password }}" required>
                 <i class="bi bi-eye-fill i-password"></i>
             </div>
             <div class="container-input"></div>
             <div class="container-input"></div>
             <div class="container-input">
                 <label for="">CAprendizaje user</label>
-                <input type="text">
+                <input type="text" name="caprendizaje_user" value="{{ current_user.caprendizaje_user }}" required>
             </div>
             <div class="container-input">
                 <label for="">CAprendizaje password</label>
-                <input type="password">
+                <input type="password" name="caprendizaje_password" value="{{ current_user.caprendizaje_password }}" required>
                 <i class="bi bi-eye-fill i-password"></i>
             </div>
             <div class="container-button">

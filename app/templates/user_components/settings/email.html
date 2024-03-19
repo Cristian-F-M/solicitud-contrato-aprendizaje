@@ -3,18 +3,18 @@
         <h2>Email settings</h2>
     </div>
     <div class="container-form">
-        <form action="">
+        <form action="{{ url_for('user.save_mail') }}" method="POST">
             <div class="container-input subject ">
                 <label for="mail-subject">subject</label>
-                <input type="text" id="mail-subject" required>
+                <input type="text" id="mail-subject" name="subject" value="{{ current_user.mail.mail_subject }}" required>
             </div>
             <div class="container-input mail-content">
                 <label for="mail-content">content</label>
-                <textarea id="mail-content" required></textarea>
+                <textarea class="scroll-min" id="mail-content" name="content" required>{{ current_user.mail.mail_content }}</textarea>
             </div>
 
             <div class="container-button">
-                <button>Guardar</button>
+                <button>Save</button>
             </div>
         </form>
     </div>

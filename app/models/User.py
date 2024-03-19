@@ -19,6 +19,7 @@ class User(db.Model, UserMixin):
     caprendizaje_password = db.Column(db.String(150), nullable=True)
     mail_id = db.Column(db.String(50), db.ForeignKey("mails.mail_id"), nullable=True)
     user_acept_tyc = db.Column(db.Boolean, nullable=True, default=True)
+    mail = db.relationship("Mail")
     user_black_list = db.relationship("Black_list", back_populates="black_list_user")
     
     
