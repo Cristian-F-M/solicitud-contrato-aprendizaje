@@ -99,6 +99,8 @@ class Company:
                     "company_id": company["company_id"],
                     "company_name": company["company_name"],
                     "company_email_address": company["company_email_address"],
+                    "company_departament": company["company_departament"],
+                    "company_city": company["company_city"],
                 }
             )
 
