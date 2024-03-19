@@ -6,7 +6,6 @@ import re
 from app.models.User import User
 from app.models.Mail import Mail
 from app.models.Company import Company
-import uuid
 
 
 bp = Blueprint("user", __name__)
