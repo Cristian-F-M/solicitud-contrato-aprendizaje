@@ -2,13 +2,11 @@ from flask import Flask, render_template
 from flask_sqlalchemy import SQLAlchemy
 from flask_login import LoginManager
 import os
-from flask_socketio import SocketIO
 import uuid
 
 
 db = SQLAlchemy()
 login_manager = LoginManager()
-socketio = SocketIO()
 
 def create_app():
     app = Flask(__name__)
@@ -17,7 +15,6 @@ def create_app():
 
     db.init_app(app)
     login_manager.init_app(app)
-    socketio.init_app(app)
 
     login_manager.login_view = "auth.view_login"
 

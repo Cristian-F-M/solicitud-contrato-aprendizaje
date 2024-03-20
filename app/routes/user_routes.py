@@ -1,7 +1,6 @@
-from app import db, socketio
+from app import db
 from flask import Blueprint, render_template, request, redirect, url_for, flash
 from flask_login import login_required, current_user
-from flask_socketio import emit
 import re
 from app.models.User import User
 from app.models.Mail import Mail
@@ -130,8 +129,3 @@ def save_file():
 
     flash(["information", "File uploaded successfully"], "flash")
     return redirect(url_for("user.view_user_settings", tag="file"))
-
-
-@socketio.on("msj")
-def msj(msj):  # <-- Recibir
-    emit("msj", msj)  # <-- Enviar
