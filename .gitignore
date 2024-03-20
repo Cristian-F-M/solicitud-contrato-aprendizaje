@@ -7,5 +7,5 @@ app/models/__pycache__/
 app/routes/__pycache__/
 app/decorators/__pycache__/
 app_exe/
-app/data/companies.json
+app/data/*.json
 app/static/files/*
