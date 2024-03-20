@@ -7,7 +7,6 @@ const iOpenCloseMenu = document.getElementById('i-open-close-menu')
 const leftMenu = document.querySelector('.container-left-menu')
 const minMenuLi = document.querySelector('#nav-min li')
 const cookieName = "minMenu"
-const socket = io();
 
 const cookies = document.cookie.split(';')
 const cookieValue = parseBoolean(cookies.find((element) => element.includes(' minMenu'))?.split('=')[1]);
@@ -71,26 +70,6 @@ function styleIcoMenu() {
         iOpenCloseMenu.parentNode.setAttribute('show', '')
     }
 }
-
-
-
-socket.on('connect', () => {
-    console.log("Conectado")
-
-
-    // socket.on('rsCorreos', data => {}) // <-- Recibir
-
-    // socket.on('msj', (msj) => {
-    //     console.log(msj)
-    // })
-})
-
-
-
-// function msj() {
-//     socket.emit('msj', 'mensaje')
-// }
-
 
 
 function parseBoolean(string) {
