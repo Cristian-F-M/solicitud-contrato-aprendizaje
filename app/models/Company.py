@@ -2,13 +2,14 @@ import json
 import time
 import uuid
 import os
+from flask_login import current_user
 
 
 class Company:
 
     def init():
-        if not os.path.exists("app/data/companies.json"):
-            with open("app/data/companies.json", "w") as file:
+        if not os.path.exists("app/data/black_list.json"):
+            with open("app/data/black_list.json", "w") as file:
                 date_now = time.strftime("%d/%m/%Y %H:%M:%S")
                 data = {
                     "information": {
@@ -21,18 +22,18 @@ class Company:
 
     def get_all_companies():
         Company.init()
-        with open("app/data/companies.json", "r", encoding="utf-8") as file:
+        with open("app/data/black_list.json", "r", encoding="utf-8") as file:
             data = json.load(file)
             return data["companies"]
 
     def empty_companies():
         Company.init()
-        with open("app/data/companies.json", "r", encoding="utf-8") as file:
+        with open("app/data/black_list.json", "r", encoding="utf-8") as file:
             data = json.load(file)
             data["companies"] = []
             data["information"]["cant_of_companies"] = 0
 
-        with open("/app/data/companies.json", "w") as file:
+        with open("/app/data/black_list.json", "w") as file:
             json.dump(data, file, indent=4)
 
     def add_company(
@@ -54,17 +55,17 @@ class Company:
             "company_city": company_city,
         }
 
-        with open("app/data/companies.json", "r", encoding="utf-8") as file:
+        with open("app/data/black_list.json", "r", encoding="utf-8") as file:
             data = json.load(file)
             data["companies"].append(company)
             data["information"]["cant_of_companies"] = len(data["companies"])
 
-        with open("app/data/companies.json", "w", encoding="utf-8") as file:
+        with open("app/data/black_list.json", "w", encoding="utf-8") as file:
             json.dump(data, file, indent=4)
 
     def get_information(field=None):
         Company.init()
-        with open("app/data/companies.json", "r", encoding="utf-8") as file:
+        with open("app/data/black_list.json", "r", encoding="utf-8") as file:
             data = json.load(file)
             if field:
                 return data["information"][field]
@@ -72,7 +73,7 @@ class Company:
 
     def get_company_by_id(company_id):
         Company.init()
-        with open("app/data/companies.json", "r", encoding="utf-8") as file:
+        with open("app/data/black_list.json", "r", encoding="utf-8") as file:
             data = json.load(file)
             for company in data["companies"]:
                 if company["company_id"] == company_id:
@@ -94,14 +95,29 @@ class Company:
             if ciudad_empresa not in empresas_ordenadas[departamento_empresa]:
                 empresas_ordenadas[departamento_empresa][ciudad_empresa] = []
 
-            empresas_ordenadas[departamento_empresa][ciudad_empresa].append(
-                {
-                    "company_id": company["company_id"],
-                    "company_name": company["company_name"],
-                    "company_email_address": company["company_email_address"],
-                    "company_departament": company["company_departament"],
-                    "company_city": company["company_city"],
-                }
-            )
+            for black_list in current_user.user_black_list:
+                if black_list.company_id != company["company_id"]:
+                    continue
+                empresas_ordenadas[departamento_empresa][ciudad_empresa].append(
+                    {
+                        "company_id": company["company_id"],
+                        "company_name": company["company_name"],
+                        "company_email_address": company["company_email_address"],
+                        "company_departament": company["company_departament"],
+                        "company_city": company["company_city"],
+                    }
+                )
 
         return empresas_ordenadas
+
+    def remove_company(company_id):
+        with open("app/data/black_list.json", "r", encoding="utf-8") as file:
+            data = json.load(file)
+            for company in data["companies"]:
+                if company["company_id"] == company_id:
+                    data["companies"].remove(company)
+                    data["information"]["cant_of_companies"] = len(data["companies"])
+                    break
+                
+        with open("app/data/black_list.json", "w", encoding="utf-8") as file:
+            json.dump(data, file, indent=4)

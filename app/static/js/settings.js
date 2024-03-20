@@ -6,6 +6,8 @@ const previewCv = document.getElementById('preview-cv')
 const inputCv = document.getElementById('input-cv')
 const dropsDown = document.querySelectorAll('.drop-down h3')
 const isPassword = document.querySelectorAll('.i-password')
+const iMoreOptions = document.querySelectorAll('[data-name="more-options"]')
+
 
 
 asNavSettings.forEach(a => {
@@ -60,7 +62,7 @@ inputCv.addEventListener('change', (evt) => {
     previewCv.classList.add('object')
     previewCv.appendChild(objectPreviewCv)
 
-    
+
     if (span) {
         span.remove()
     }
@@ -176,5 +178,29 @@ isPassword.forEach(i => {
         let type = input.getAttribute('type')
         i.classList.toggle('bi-eye-slash-fill')
         input.setAttribute('type', (type === 'password') ? 'text' : 'password')
+    })
+})
+
+
+
+iMoreOptions.forEach(i => {
+    i.addEventListener('click', () => {
+        let containerMoreOptions = i.nextElementSibling
+
+
+        containerMoreOptions.classList.toggle('show')
+    })
+})
+
+
+
+document.addEventListener('click', (evt) => {
+    let element = evt.target
+    iMoreOptions.forEach(i => {
+        let containerMoreOptions = i.nextElementSibling
+        if (element != i && element != containerMoreOptions) {
+            containerMoreOptions.classList.remove('show')
+        }
+
     })
 })
