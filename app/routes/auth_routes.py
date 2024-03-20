@@ -45,6 +45,10 @@ def login():
     user_password = request.form["user_password"]
     user = User.query.filter_by(user_email=user_email).first()
 
+    if not user:
+        flash(["mistake", "Invalid credentials", "flash"])
+        return redirect(url_for("auth.view_login"))
+
     if not bcrypt.check_password_hash(
         password=user_password, pw_hash=user.user_password
     ):
