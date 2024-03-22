@@ -54,9 +54,10 @@ def login():
     ):
         flash(["mistake", "Invalid credentials"], "flash")
         return redirect(url_for("auth.view_login"))
-
     login_user(user)
 
+
+    flash(["information", "You are logged in"], "flash")
     if user.user_role_id > 1:
         return redirect(url_for("administrator.view_dashboard"))
 
