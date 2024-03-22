@@ -1,0 +1,30 @@
+{% set flashes = get_flashed_messages(category_filter=['flash']) %}
+
+<link rel="stylesheet" href="{{ url_for('static', filename='css/alert.css') }}">
+<script src="{{ url_for('static', filename='js/alert.js') }}" defer></script>
+<link rel="stylesheet" href="{{ url_for('static', filename='css/icons/bootstrap-icons.min.css') }}">
+
+
+<div class="container-messages">
+    {% for flash in flashes %}
+    <div class="message {{ flash[0] }}">
+        <span class="close"><i class="bi bi-x-lg"></i></span>
+        <p>{{ flash[-1] }}</p>
+        <span class="loader"></span>
+    </div>
+    {% endfor %}
+</div>
+
+
+{#
+{% set session = get_flashed_messages(category_filter=['session'])[0] %}
+{% if session %}
+<div class="c_mensajes" id="Mensajes">
+    <div class="mensaje {{ 'text-error' if session[0] == 'error' else ''}}">
+        <p>{{ session[-1] }}</p>
+        <div class="c_carga"></div>
+    </div>
+</div>
+{% endif %}
+
+#}
