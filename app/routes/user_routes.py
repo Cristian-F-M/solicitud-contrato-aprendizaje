@@ -69,7 +69,7 @@ def save_mail():
     mail_content = request.form["content"]
 
     if not mail_subject:
-        flash(["mistake", "Subject is required"], "flash", methods=["POST"])
+        flash(["mistake", "Subject is required"], "flash")
         return redirect(url_for("user.view_user_settings", tag="email"))
 
     if not mail_content:
