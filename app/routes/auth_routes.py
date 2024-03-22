@@ -46,13 +46,13 @@ def login():
     user = User.query.filter_by(user_email=user_email).first()
 
     if not user:
-        flash(["mistake", "Invalid credentials", "flash"])
+        flash(["mistake", "Invalid credentials"], "flash")
         return redirect(url_for("auth.view_login"))
 
     if not bcrypt.check_password_hash(
         password=user_password, pw_hash=user.user_password
     ):
-        flash(["mistake", "Invalid credentials", "flash"])
+        flash(["mistake", "Invalid credentials"], "flash")
         return redirect(url_for("auth.view_login"))
 
     login_user(user)
@@ -66,5 +66,5 @@ def login():
 @bp.route("/User/Logout")
 def logout():
     logout_user()
-    flash(["information", "you have logged out", "flash"])
+    flash(["information", "you have logged out"], "flash")
     return redirect(url_for("auth.home"))
