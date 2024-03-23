@@ -7,7 +7,7 @@ from flask_login import current_user
 
 class Company:
 
-    def init():
+    def init_blacklist():
         if not os.path.exists("app/data/black_list.json"):
             with open("app/data/black_list.json", "w") as file:
                 date_now = time.strftime("%d/%m/%Y %H:%M:%S")
@@ -20,14 +20,14 @@ class Company:
                 }
                 json.dump(data, file, indent=4)
 
-    def get_all_companies():
-        Company.init()
+    def get_all_companies_blacklist():
+        Company.init_blacklist()
         with open("app/data/black_list.json", "r", encoding="utf-8") as file:
             data = json.load(file)
             return data["companies"]
 
-    def empty_companies():
-        Company.init()
+    def empty_companies_blacklist():
+        Company.init_blacklist()
         with open("app/data/black_list.json", "r", encoding="utf-8") as file:
             data = json.load(file)
             data["companies"] = []
@@ -36,7 +36,7 @@ class Company:
         with open("/app/data/black_list.json", "w") as file:
             json.dump(data, file, indent=4)
 
-    def add_company(
+    def add_company_blacklist(
         self,
         company_id=str(uuid.uuid4()),
         company_name=None,
@@ -45,7 +45,7 @@ class Company:
         company_city=None,
     ):
 
-        Company.init()
+        Company.init_blacklist()
 
         company = {
             "company_id": company_id,
@@ -63,16 +63,16 @@ class Company:
         with open("app/data/black_list.json", "w", encoding="utf-8") as file:
             json.dump(data, file, indent=4)
 
-    def get_information(field=None):
-        Company.init()
+    def get_information_blacklist(field=None):
+        Company.init_blacklist()
         with open("app/data/black_list.json", "r", encoding="utf-8") as file:
             data = json.load(file)
             if field:
                 return data["information"][field]
             return data["information"]["cant_of_companies"]
 
-    def get_company_by_id(company_id):
-        Company.init()
+    def get_company_blacklist_by_id(company_id):
+        Company.init_blacklist()
         with open("app/data/black_list.json", "r", encoding="utf-8") as file:
             data = json.load(file)
             for company in data["companies"]:
@@ -80,9 +80,9 @@ class Company:
                     return company
             return None
 
-    def get_companies_sorted():
-        Company.init()
-        companies = Company.get_all_companies()
+    def get_companies_blacklist_sorted():
+        Company.init_blacklist()
+        companies = Company.get_all_companies_blacklist()
         empresas_ordenadas = {}
 
         for company in companies:
@@ -110,7 +110,7 @@ class Company:
 
         return empresas_ordenadas
 
-    def remove_company(company_id):
+    def remove_company_blacklist(company_id):
         with open("app/data/black_list.json", "r", encoding="utf-8") as file:
             data = json.load(file)
             for company in data["companies"]:
