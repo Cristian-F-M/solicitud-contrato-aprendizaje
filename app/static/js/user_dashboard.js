@@ -4,12 +4,9 @@ const containersNameIco = document.querySelectorAll('.container-name-ico')
 const navWebCaprendizaje = document.getElementById('nav-web-caprendizaje')
 const navMin = document.getElementById('nav-min')
 const iOpenCloseMenu = document.getElementById('i-open-close-menu')
-const leftMenu = document.querySelector('.container-left-menu')
+let leftMenu = document.querySelector('.container-left-menu')
 const minMenuLi = document.querySelector('#nav-min li')
-const cookieName = "minMenu"
-
-const cookies = document.cookie.split(';')
-const cookieValue = parseBoolean(cookies.find((element) => element.includes(' minMenu'))?.split('=')[1]);
+const localStorageName = "minMenu"
 
 main.style.setProperty('--height-header', `${header.clientHeight}px`)
 leftMenu.style.setProperty('--height-header', `${header.clientHeight}px`)
@@ -70,6 +67,38 @@ function styleIcoMenu() {
         iOpenCloseMenu.parentNode.setAttribute('show', '')
     }
 }
+
+
+function parseBoolean(string) {
+    return string === "true";
+}
+
+
+function saveStateMenu() {
+    let stateMenu = getStateMenu()
+    window.localStorage.setItem(localStorageName, stateMenu)
+}
+
+
+function getStateMenu() {
+    leftMenu = document.querySelector('.container-left-menu')
+    const stateMenu = leftMenu.hasAttribute('min')
+
+    return stateMenu
+}
+
+
+loadStateMenu()
+
+function loadStateMenu() {
+    let stateMenu = window.localStorage.getItem(localStorageName)
+    stateMenu && parseBoolean(stateMenu) ? openMinMenu() : openLeftMenu()
+}
+
+
+iOpenCloseMenu.addEventListener('click', saveStateMenu)
+minMenuLi.addEventListener('click', saveStateMenu)
+
 
 
 function parseBoolean(string) {
