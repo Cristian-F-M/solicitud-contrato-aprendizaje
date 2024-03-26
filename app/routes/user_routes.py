@@ -19,8 +19,17 @@ def view_dashboard():
 @bp.route("/User/Caprendizaje/Settings")
 @login_required
 def view_user_settings():        
-    companies_sorted = Company.get_companies_sorted()
+    companies_sorted = Company.get_companies_blacklist_sorted()
     return render_template("user/settings.html", companies_sorted=companies_sorted)
+
+
+@bp.route("/User/Caprendizaje/Search-Emails")
+@login_required
+def view_user_search_emails():
+    data = Company.get_companies()
+    blacklist = Company.get_all_companies_blacklist()
+    return render_template("user/search_emails.html", data_companies=data, blacklist=blacklist)
+
 
 
 @bp.route("/User/Account", methods=["POST"])
