@@ -1,0 +1,89 @@
+{% extends 'user/base_dashboard.html' %} {% block title %} - Search emails {%
+endblock title %} {% block other_accessories %}
+
+<link rel="stylesheet" href="{{ url_for('static', filename='css/search_emails.css') }}" />
+<script src="{{ url_for('static', filename='js/search_emails.js') }}" defer></script>
+
+{% endblock other_accessories %} {% block content_dashboard %}
+
+{% set existCompanies = data_companies['companies'] | length > 0 %}
+<div class="main-search-emails scroll-min">
+    <div class="container-btn-search">
+        <button id="button-search-emails">Start searching</button>
+    </div>
+
+    <div class="container-information-search {{ 'show' if existCompanies else '' }}" >
+        <div class="container-cant-companies">
+            <h3>Companies found</h3>
+            <p class="tag" id="cantCompanies">
+                {{ data_companies["information"]['cantCompanies'] }}
+            </p>
+        </div>
+        <div class="container-date">
+            <h3>Last search</h3>
+            <div class="container-dates">
+                <p class="tag" id="lastUpdate">
+                    {{ data_companies["information"]['lastUpdated_f'] }}
+                </p>
+            </div>
+        </div>
+    </div>
+
+
+    <article class="container-table-companies scroll-min {{ 'show' if existCompanies else '' }}">
+        <table>
+            <thead>
+                <tr>
+                    <th>Name</th>
+                    <th>Email address</th>
+                    <th>Location</th>
+                </tr>
+            </thead>
+            <tbody id="tbody-table-companies">
+                {% for company in data_companies['companies'] %}
+                
+                <tr>
+                    <td
+                        title="{{ 'Not found' if company['company_name'] == '' else 'Company ' + company['company_name'] }}">
+                        {{ company['company_name'] if company['company_name'] !=
+                        '' else "Not found" }}
+                    </td>
+                    <td class="text-18">
+                        {{ company['company_email_address'] }}
+                    </td>
+                    <td>
+                        {{ company['company_departament'] }} / {{
+                        company['company_city'] }}
+                    </td>
+                    <td>
+                        <i title="More options" class="bi bi-list" data-name="more-options"></i>
+
+                        <div class="container-more-options">
+                            <ul>
+                                <li>
+                                    <a
+                                        href="{{ url_for('company.remove_company_blacklist_search', company_id=company['company_id']) if company['blacklisted'] else url_for('company.add_company_blacklist', company_id=company['company_id']) }}">
+                                        {% if company['blacklisted'] %} Remove from blacklist {% else %} Add to blacklist
+                                        {% endif %}
+
+                                    </a>
+                                    </a>
+                                </li>
+                            </ul>
+                        </div>
+                    </td>
+                </tr>
+                {% endfor %}
+            </tbody>
+        </table>
+    </article>
+
+
+    
+    <article class="container-message no-emails {{ 'show' if not existCompanies else '' }}" >
+        <h3>Start searching to see the emails</h3>
+    </article>
+
+</div>
+
+{% endblock content_dashboard %}
