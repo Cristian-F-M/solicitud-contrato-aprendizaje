@@ -69,17 +69,25 @@
                         </ul>
                     </div>
                 </li>
+            </ul>
 
-                <li>
+            <ul id="nav-min">
+                <li><img src="{{ url_for('static', filename='images/logo-SENA.jpg') }}" alt="Logo SGVA"></li>
+            </ul>
+        </nav>
+        <nav class="user">
+            <ul>
+                <li class="li-max">
                     <a href="{{ url_for('auth.logout') }}">
                         <i class="bi bi-box-arrow-left"></i>
                         Logout
                     </a>
                 </li>
-            </ul>
-
-            <ul id="nav-min">
-                <li><img src="{{ url_for('static', filename='images/logo-SENA.jpg') }}" alt="Logo SGVA"></li>
+                <li class="li-min">
+                    <a href="{{ url_for('auth.logout') }}">
+                        <i class="bi bi-box-arrow-left"></i>
+                    </a>
+                </li>
             </ul>
         </nav>
         <div class="open-close-let-menu">
