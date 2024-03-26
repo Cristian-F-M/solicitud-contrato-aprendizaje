@@ -1,0 +1,35 @@
+<link rel="stylesheet" href="{{ url_for('static', filename='css/information-searching.css') }}">
+
+<div class="container-information">
+    <div class="information">
+        <header>
+            <h3>Information</h3>
+        </header>
+
+        <section>
+            <p>
+                In a few moments, the Chrome browser will open in which the email search will begin.
+                <span> Do not close or minimize this window, this will cause the program to fail.</span>
+            </p>
+        </section>
+
+
+        <div class="container-button">
+            <button onclick="closeInformation()">Cerrar</button>
+        </div>
+    </div>
+</div>
+
+
+
+<script>
+    const containerInformation = document.querySelector('.container-information');
+
+    function showInformation() {
+        containerInformation.classList.add('show');
+    }
+
+    function closeInformation() {
+        containerInformation.classList.remove('show');
+    }
+</script>

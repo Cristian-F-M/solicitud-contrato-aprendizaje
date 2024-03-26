@@ -6,8 +6,9 @@ const tbodyTableCompanies = document.getElementById('tbody-table-companies')
 const containerTableCompanies = document.querySelector('.container-table-companies')
 const containerInformationSearch = document.querySelector('.container-information-search')
 const containerMessage = document.querySelector('.container-message')
-const lastUpdate = document.getElementById('last-update')
-const cantCompanies = document.getElementById('cant-companies')
+const lastUpdate = document.getElementById('lastUpdate')
+const cantCompanies = document.getElementById('cantCompanies')
+var searching = false
 
 
 aBlacklist.forEach(a => {
@@ -35,15 +36,25 @@ window.onload = function () {
 
 
 buttonSearchEmails.addEventListener('click', async () => {
+
+
+    if (searching) return
+
+    showInformation()
+
+    setTimeout(() => {
+        closeInformation()
+    }, 5000)
+
+    searching = true
+    buttonSearchEmails.disabled = true
+
     data = await searchEmails();
 
     const { information, companies } = data
 
 
     tbodyTableCompanies.innerHTML = ''
-
-    console.log(companies)
-    console.log(typeof companies)
 
 
     companies.forEach(company => {
@@ -71,8 +82,10 @@ buttonSearchEmails.addEventListener('click', async () => {
 
     if (containerMessage.classList.contains('show')) {
         containerMessage.classList.toggle('show')
-
     }
+
+    buttonSearchEmails.disabled = false
+    searching = false
 })
 
 
@@ -182,3 +195,8 @@ function createTrTableCompanies(company) {
 
     return tr
 }
+
+
+
+
+
