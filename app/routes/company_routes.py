@@ -5,6 +5,8 @@ from app.models.Black_list import Black_list
 from app.caprendizaje.app import Iniciar
 from flask_login import current_user
 import uuid
+import time
+
 
 bp = Blueprint("company", __name__)
 
@@ -72,6 +74,7 @@ def add_company_blacklist(company_id):
 
 @bp.route('/Company/Search-Emails', methods=["POST"])
 def search_emails():
+    time.sleep(3)
     Company.init_companies()
     Iniciar()
     return Company.get_companies()
