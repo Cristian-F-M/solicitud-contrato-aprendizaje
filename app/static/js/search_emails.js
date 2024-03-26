@@ -41,6 +41,7 @@ buttonSearchEmails.addEventListener('click', async () => {
     if (searching) return
 
     showInformation()
+    showFullLoading()
 
     setTimeout(() => {
         closeInformation()
@@ -86,6 +87,7 @@ buttonSearchEmails.addEventListener('click', async () => {
 
     buttonSearchEmails.disabled = false
     searching = false
+    hideFullLoading()
 })
 
 
