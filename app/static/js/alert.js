@@ -107,9 +107,3 @@ function createMessage(text, mistake = false) {
     addEventCloseMessage()
     starMessages()
 }
-
-
-document.getElementById('button-createMessage').addEventListener('click', () => {
-    let mistake = document.getElementById('input-mistake').checked
-    createMessage(document.getElementById('input-createMessage').value, mistake)
-})
