@@ -88,6 +88,7 @@ buttonSearchEmails.addEventListener('click', async () => {
     buttonSearchEmails.disabled = false
     searching = false
     hideFullLoading()
+    showSearchCompleted()
 })
 
 

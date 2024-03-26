@@ -1,0 +1,31 @@
+<div class="overlay-completed">
+    <div class="container-completed">
+        <div class="close">
+            <i class="bi bi-x-lg"></i>
+        </div>
+        <div class="icon">
+            {% include 'icons/checked.html' %}
+        </div>
+        <div class="content">
+            <p>
+                Search completed
+            </p>
+        </div>
+    </div>
+</div>
+
+
+<script>
+    const overlayCompleted = document.querySelector('.overlay-completed');
+    const closeCompleted = document.querySelector('.close i');
+
+    function showSearchCompleted() {
+        overlayCompleted.classList.add('show');
+    }
+
+    function closeSearchCompleted() {
+        overlayCompleted.classList.remove('show');
+    }
+
+    closeCompleted.addEventListener('click', closeSearchCompleted);
+</script>
