@@ -9,3 +9,6 @@ app/decorators/__pycache__/
 app_exe/
 app/data/*.json
 app/static/files/*
+!app/data/locations.json
+!app/data/cities.json
+!app/data/departaments.json
