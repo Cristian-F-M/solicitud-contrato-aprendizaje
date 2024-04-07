@@ -190,8 +190,6 @@ isPassword.forEach(i => {
 iMoreOptions.forEach(i => {
     i.addEventListener('click', () => {
         let containerMoreOptions = i.nextElementSibling
-
-
         containerMoreOptions.classList.toggle('show')
     })
 })
@@ -202,7 +200,8 @@ document.addEventListener('click', (evt) => {
     let element = evt.target
     iMoreOptions.forEach(i => {
         let containerMoreOptions = i.nextElementSibling
-        if (element != i && element != containerMoreOptions) {
+        let svg = i.querySelector('svg')
+        if (element != i && element != containerMoreOptions && element != svg) {
             containerMoreOptions.classList.remove('show')
         }
 
