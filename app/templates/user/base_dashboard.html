@@ -17,7 +17,9 @@
 {% block content %}
 <header class="header">
     <div class="container-logo">
-        <img src="{{ url_for('static', filename='images/logo_cm_minimalista.webp') }}" alt="">
+        <a href="{{ url_for('user.view_dashboard') }}">
+            <img src="{{ url_for('static', filename='images/logo_cm_minimalista.webp') }}" alt="">
+        </a>
     </div>
     <h1>Search CM</h1>
 </header>
