@@ -1,0 +1,142 @@
+{% extends 'user/base_dashboard.html' %}
+
+{% block title %}
+- Send emails
+{% endblock title %}
+
+
+{% block other_accessories %}
+<link rel="stylesheet" href="{{ url_for('static', filename='css/send_emails.css') }}">
+<script src="{{ url_for('static', filename='js/send_emails.js') }}" defer></script>
+{% endblock other_accessories %}
+
+{% block content_dashboard %}
+
+{% set filters = all_information['filters'] %}
+{% set send_to = all_information['send-to'] %}
+{% set to = all_information['to'] %}
+{% set dict_to = {"all": "all", "department": "departments","city": "cities"} %}
+{% set to_to_show = dict_to[to] %}
+
+<div class="main-send-emails">
+    <div class="container-filters">
+        <div class="container-input">
+            <label for="send-all">
+                <span class="picker-checkbox"></span>
+                <input name="filter-send" id="send-all" type="radio" {{ 'checked' if "send-" + to_to_show == "send-all" else "" }}
+                >
+                Send all
+            </label>
+        </div>
+        <div class="container-input">
+            <label for="send-departments">
+                <span class="picker-checkbox"></span>
+                <input name="filter-send" id="send-departments" type="radio" {{ 'checked' if "send-" + to_to_show == "send-departments"
+                    else "" }}>
+                Send to departament
+            </label>
+        </div>
+        <div class="container-input">
+            <label for="send-cities">
+                <span class="picker-checkbox"></span>
+                <input name="filter-send" id="send-cities" type="radio" {{ 'checked' if "send-" + to_to_show == "send-cities" else ""
+                    }}>
+                Send to city
+            </label>
+        </div>
+    </div>
+
+    <div class="container-information" show="{{ send_to }}">
+
+        <p>Emails will be sent to all companies</p>
+
+        <div class="information_container-locations">
+            <span>Emails will be sent to the following {{ to_to_show }}:</span>
+            <div class="locations">
+
+
+                {% for filter in filters %}
+                <span value="{{ filter[to + '_id'] }}" class="tag">{{ filter[to + '_name'] }}</span>
+                {% endfor %}
+            </div>
+        </div>
+    </div>
+
+    <div class="container-button">
+        <button id="send-emails">Send emails</button>
+    </div>
+
+
+    <div class="overlay-filter container-filter-departments">
+        <div class="main-overlay">
+            <div class="main-filter scroll-min">
+                <header class="scroll-blur">
+                    <div class="close">
+                        <i id="close-filter-department" class="bi bi-x-lg"></i>
+                    </div>
+                    <h3>Filter by departament</h3>
+                </header>
+
+                <div class="container-locations">
+                    {% for department in departments %}
+                    <div class="container-input">
+                        <label for="{{ department['department_id'] }}_{{ department['department_name'] }}">
+                            <span class="picker-checkbox"></span>
+                            <input type="checkbox" id="{{ department['department_id'] }}_{{ department['department_name'] }}"
+                                value="{{ department['department_id'] }}_{{ department['department_name'] }}" {{ 'checked' if department in filters else ''
+                                }}>
+
+                            {{ department['department_name'] }}
+                        </label>
+                    </div>
+                    {% endfor %}
+                    <div class="container-button button-apply">
+                        <button data-name="department">Apply</button>
+                    </div>
+                </div>
+
+
+                <div class="container-up-down">
+                    <i class="bi bi-arrow-down-short"></i>
+                </div>
+            </div>
+        </div>
+    </div>
+
+
+    <div class="overlay-filter container-filter-cities">
+        <div class="main-overlay">
+            <div class="main-filter scroll-min">
+                <header class="">
+                    <div class="close">
+                        <i id="close-filter-city" class="bi bi-x-lg"></i>
+                    </div>
+                    <h3>Filter by city</h3>
+                </header>
+
+                <div class="container-locations">
+                    {% for city in cities %}
+                    <div class="container-input">
+                        <label for="{{ city['city_id'] }}_{{ city['city_name'] }}">
+                            <span class="picker-checkbox"></span>
+                            <input type="checkbox" id="{{ city['city_id'] }}_{{ city['city_name'] }}" value="{{ city['city_id'] }}_{{ city['city_name'] }}" {{ 'checked'
+                                if city in filters else '' }}>
+                            {{ city['city_name'] }}
+                        </label>
+                    </div>
+                    {% endfor %}
+
+
+                    <div class="container-button button-apply">
+                        <button data-name="city">Apply</button>
+                    </div>
+                    <div class="container-up-down">
+                        <i class="bi bi-arrow-down-short"></i>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    {% include 'components/full_loading.html' %}
+    {% endblock content_dashboard %}
