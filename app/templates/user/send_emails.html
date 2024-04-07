@@ -23,24 +23,24 @@
         <div class="container-input">
             <label for="send-all">
                 <span class="picker-checkbox"></span>
-                <input name="filter-send" id="send-all" type="radio" {{ 'checked' if "send-" + to_to_show == "send-all" else "" }}
-                >
+                <input name="filter-send" id="send-all" type="radio" {{ 'checked' if "send-" + to_to_show=="send-all"
+                    else "" }}>
                 Send all
             </label>
         </div>
         <div class="container-input">
             <label for="send-departments">
                 <span class="picker-checkbox"></span>
-                <input name="filter-send" id="send-departments" type="radio" {{ 'checked' if "send-" + to_to_show == "send-departments"
-                    else "" }}>
+                <input name="filter-send" id="send-departments" type="radio" {{ 'checked' if "send-" +
+                    to_to_show=="send-departments" else "" }}>
                 Send to departament
             </label>
         </div>
         <div class="container-input">
             <label for="send-cities">
                 <span class="picker-checkbox"></span>
-                <input name="filter-send" id="send-cities" type="radio" {{ 'checked' if "send-" + to_to_show == "send-cities" else ""
-                    }}>
+                <input name="filter-send" id="send-cities" type="radio" {{ 'checked' if "send-" +
+                    to_to_show=="send-cities" else "" }}>
                 Send to city
             </label>
         </div>
@@ -72,7 +72,19 @@
             <div class="main-filter scroll-min">
                 <header class="scroll-blur">
                     <div class="close">
-                        <i id="close-filter-department" class="bi bi-x-lg"></i>
+                        <i id="close-filter-department" class="">
+                            <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24"
+                                fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"
+                                stroke-linejoin="round" class="icon icon-tabler icons-tabler-outline icon-tabler-list">
+                                <path stroke="none" d="M0 0h24v24H0z" fill="none" />
+                                <path d="M9 6l11 0" />
+                                <path d="M9 12l11 0" />
+                                <path d="M9 18l11 0" />
+                                <path d="M5 6l0 .01" />
+                                <path d="M5 12l0 .01" />
+                                <path d="M5 18l0 .01" />
+                            </svg>
+                        </i>
                     </div>
                     <h3>Filter by departament</h3>
                 </header>
@@ -82,9 +94,10 @@
                     <div class="container-input">
                         <label for="{{ department['department_id'] }}_{{ department['department_name'] }}">
                             <span class="picker-checkbox"></span>
-                            <input type="checkbox" id="{{ department['department_id'] }}_{{ department['department_name'] }}"
-                                value="{{ department['department_id'] }}_{{ department['department_name'] }}" {{ 'checked' if department in filters else ''
-                                }}>
+                            <input type="checkbox"
+                                id="{{ department['department_id'] }}_{{ department['department_name'] }}"
+                                value="{{ department['department_id'] }}_{{ department['department_name'] }}"
+                                {{ 'checked' if department in filters else '' }}>
 
                             {{ department['department_name'] }}
                         </label>
@@ -97,7 +110,14 @@
 
 
                 <div class="container-up-down">
-                    <i class="bi bi-arrow-down-short"></i>
+                    <i class="">
+                        <svg width="24" height="24" fill="none" stroke="currentColor" stroke-linecap="round"
+                            stroke-linejoin="round" stroke-width="2"
+                            class="icon icon-tabler icons-tabler-outline icon-tabler-arrow-down" viewBox="0 0 24 24">
+                            <path stroke="none" d="M0 0h24v24H0z" />
+                            <path d="M12 5v14M18 13l-6 6M6 13l6 6" />
+                        </svg>
+                    </i>
                 </div>
             </div>
         </div>
@@ -109,7 +129,14 @@
             <div class="main-filter scroll-min">
                 <header class="">
                     <div class="close">
-                        <i id="close-filter-city" class="bi bi-x-lg"></i>
+                        <i id="close-filter-city" class="">
+                            <svg width="24" height="24" fill="none" stroke="currentColor" stroke-linecap="round"
+                                stroke-linejoin="round" stroke-width="2"
+                                class="icon icon-tabler icons-tabler-outline icon-tabler-x" viewBox="0 0 24 24">
+                                <path stroke="none" d="M0 0h24v24H0z" />
+                                <path d="M18 6 6 18M6 6l12 12" />
+                            </svg>
+                        </i>
                     </div>
                     <h3>Filter by city</h3>
                 </header>
@@ -119,8 +146,9 @@
                     <div class="container-input">
                         <label for="{{ city['city_id'] }}_{{ city['city_name'] }}">
                             <span class="picker-checkbox"></span>
-                            <input type="checkbox" id="{{ city['city_id'] }}_{{ city['city_name'] }}" value="{{ city['city_id'] }}_{{ city['city_name'] }}" {{ 'checked'
-                                if city in filters else '' }}>
+                            <input type="checkbox" id="{{ city['city_id'] }}_{{ city['city_name'] }}"
+                                value="{{ city['city_id'] }}_{{ city['city_name'] }}" {{ 'checked' if city in filters
+                                else '' }}>
                             {{ city['city_name'] }}
                         </label>
                     </div>
@@ -131,7 +159,15 @@
                         <button data-name="city">Apply</button>
                     </div>
                     <div class="container-up-down">
-                        <i class="bi bi-arrow-down-short"></i>
+                        <i class="">
+                            <svg width="24" height="24" fill="none" stroke="currentColor" stroke-linecap="round"
+                                stroke-linejoin="round" stroke-width="2"
+                                class="icon icon-tabler icons-tabler-outline icon-tabler-arrow-down"
+                                viewBox="0 0 24 24">
+                                <path stroke="none" d="M0 0h24v24H0z" />
+                                <path d="M12 5v14M18 13l-6 6M6 13l6 6" />
+                            </svg>
+                        </i>
                     </div>
                 </div>
             </div>

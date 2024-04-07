@@ -10,7 +10,14 @@
         <div class="departament drop-down">
             <h3>
                 {{ departament }}
-                <i class="bi bi-chevron-down"></i>
+                <i class="">
+                    <svg width="24" height="24" fill="none" stroke="currentColor" stroke-linecap="round"
+                        stroke-linejoin="round" stroke-width="2"
+                        class="icon icon-tabler icons-tabler-outline icon-tabler-chevron-down" viewBox="0 0 24 24">
+                        <path stroke="none" d="M0 0h24v24H0z" />
+                        <path d="m6 9 6 6 6-6" />
+                    </svg>
+                </i>
             </h3>
 
             <div class="container-cities">
@@ -18,7 +25,15 @@
                 <div class="city drop-down">
                     <h3>
                         {{ city }}
-                        <i class="bi bi-chevron-down"></i>
+                        <i class="">
+                            <svg width="24" height="24" fill="none" stroke="currentColor" stroke-linecap="round"
+                                stroke-linejoin="round" stroke-width="2"
+                                class="icon icon-tabler icons-tabler-outline icon-tabler-chevron-down"
+                                viewBox="0 0 24 24">
+                                <path stroke="none" d="M0 0h24v24H0z" />
+                                <path d="m6 9 6 6 6-6" />
+                            </svg>
+                        </i>
                     </h3>
                     <div class="container-emails">
                         {% if current_user.user_black_list %}
@@ -26,12 +41,21 @@
                             {% for company in companies %}
                             <li>
                                 {{ company['company_name'] }} | {{ company['company_email_address'] }}
-                                <i title="More options" class="bi bi-list" data-name="more-options"></i>
+                                <i title="More options" class="" data-name="more-options">
+                                    <svg width="24" height="24" fill="none" stroke="currentColor" stroke-linecap="round"
+                                        stroke-linejoin="round" stroke-width="2"
+                                        class="icon icon-tabler icons-tabler-outline icon-tabler-list"
+                                        viewBox="0 0 24 24">
+                                        <path stroke="none" d="M0 0h24v24H0z" />
+                                        <path d="M9 6h11M9 12h11M9 18h11M5 6v.01M5 12v.01M5 18v.01" />
+                                    </svg>
+                                </i>
 
                                 <div class="container-more-options">
                                     <ul>
                                         <li>
-                                            <a href="{{ url_for('company.remove_company_blacklist', company_id=company['company_id']) }}">Remove</a>
+                                            <a
+                                                href="{{ url_for('company.remove_company_blacklist', company_id=company['company_id']) }}">Remove</a>
                                         </li>
                                     </ul>
                                 </div>

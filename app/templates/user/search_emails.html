@@ -12,7 +12,7 @@ endblock title %} {% block other_accessories %}
         <button id="button-search-emails">Start searching</button>
     </div>
 
-    <div class="container-information-search {{ 'show' if existCompanies else '' }}" >
+    <div class="container-information-search {{ 'show' if existCompanies else '' }}">
         <div class="container-cant-companies">
             <h3>Companies found</h3>
             <p class="tag" id="cantCompanies">
@@ -41,7 +41,7 @@ endblock title %} {% block other_accessories %}
             </thead>
             <tbody id="tbody-table-companies">
                 {% for company in data_companies['companies'] %}
-                
+
                 <tr>
                     <td
                         title="{{ 'Not found' if company['company_name'] == '' else 'Company ' + company['company_name'] }}">
@@ -56,14 +56,22 @@ endblock title %} {% block other_accessories %}
                         company['company_city'] }}
                     </td>
                     <td>
-                        <i title="More options" class="bi bi-list" data-name="more-options"></i>
+                        <i title="More options" class="" data-name="more-options">
+                            <svg width="24" height="24" fill="none" stroke="currentColor" stroke-linecap="round"
+                                stroke-linejoin="round" stroke-width="2"
+                                class="icon icon-tabler icons-tabler-outline icon-tabler-list" viewBox="0 0 24 24">
+                                <path stroke="none" d="M0 0h24v24H0z" />
+                                <path d="M9 6h11M9 12h11M9 18h11M5 6v.01M5 12v.01M5 18v.01" />
+                            </svg>
+                        </i>
 
                         <div class="container-more-options">
                             <ul>
                                 <li>
                                     <a
                                         href="{{ url_for('company.remove_company_blacklist_search', company_id=company['company_id']) if company['blacklisted'] else url_for('company.add_company_blacklist', company_id=company['company_id']) }}">
-                                        {% if company['blacklisted'] %} Remove from blacklist {% else %} Add to blacklist
+                                        {% if company['blacklisted'] %} Remove from blacklist {% else %} Add to
+                                        blacklist
                                         {% endif %}
 
                                     </a>
@@ -79,8 +87,8 @@ endblock title %} {% block other_accessories %}
     </article>
 
 
-    
-    <article class="container-message no-emails {{ 'show' if not existCompanies else '' }}" >
+
+    <article class="container-message no-emails {{ 'show' if not existCompanies else '' }}">
         <h3>Start searching to see the emails</h3>
     </article>
 
