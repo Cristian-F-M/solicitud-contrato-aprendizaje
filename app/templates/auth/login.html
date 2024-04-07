@@ -5,8 +5,11 @@ Search CM - login
 {% endblock title %}
 
 {% block accessories %}
-<link rel="stylesheet" href="{{ url_for('static', filename='css/form.css') }}">
 {% endblock accessories %}
+
+{% block other_accessories %}
+<link rel="stylesheet" href="{{ url_for('static', filename='css/form.css') }}">
+{% endblock other_accessories %}
 
 {% block content %}
 <div class="container-c-form">
@@ -20,7 +23,7 @@ Search CM - login
 
         <form action="{{ url_for('auth.login') }}" method="POST" autocomplete="off" translate="no">
             <div class="container-input">
-                <input id="user_email" name="user_email" type="email" required>
+                <input id="user_email" name="user_email" type="email" required autofocus>
                 <label for="user_email">Email</label>
             </div>
             <div class="container-input">
