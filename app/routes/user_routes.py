@@ -5,6 +5,8 @@ import re
 from app.models.User import User
 from app.models.Mail import Mail
 from app.models.Company import Company
+from app.models.Location import Location
+from app.caprendizaje.send_emails import load_emails, send_email
 
 
 bp = Blueprint("user", __name__)
@@ -31,6 +33,22 @@ def view_user_search_emails():
     return render_template("user/search_emails.html", data_companies=data, blacklist=blacklist)
 
 
+@bp.route("/User/Caprendizaje/Send-emails")
+@login_required
+def view_user_send_emails():
+    cities = Location.get_all_cities()
+    departments = Location.get_all_departments()
+    all_information = Location.get_all_information_filter()
+    return render_template("user/send_emails.html", cities=cities, departments=departments, all_information=all_information)
+
+
+@bp.route("/User/Send-emails", methods=["POST"])
+def send_emails():
+    request_json = request.json
+    send_to = request_json["send_to"]
+    
+    data = send_email(send_to)
+    return data
 
 @bp.route("/User/Account", methods=["POST"])
 def save_account():
