@@ -2,6 +2,7 @@ var closesMessage = document.querySelectorAll('span.close')
 const containerMessages = document.querySelector('.container-messages')
 var messages = containerMessages.querySelectorAll('.message')
 const root = document.documentElement;
+const SVG_X = `<svg width="24" height="24" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" class="icon icon-tabler icons-tabler-outline icon-tabler-x" viewBox="0 0 24 24"><path stroke="none" d="M0 0h24v24H0z"/><path d="M18 6 6 18M6 6l12 12"/></svg>`
 
 
 function addEventCloseMessage() {
@@ -93,7 +94,7 @@ function createMessage(text, mistake = false) {
     close.classList.add('close')
     p.innerText = text
     loader.classList.add('loader')
-    closeIcon.classList.add('bi', 'bi-x-lg')
+    closeIcon.innerHTML = SVG_X
     close.appendChild(closeIcon)
 
 
