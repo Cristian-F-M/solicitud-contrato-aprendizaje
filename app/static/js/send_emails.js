@@ -318,7 +318,7 @@ async function send_emails() {
 
 async function sendApi(data) {
     sendEmails.disabled = true
-    showFullLoading()
+    showFullLoading("Sending emails")
 
     let result = await fetch('/User/Send-emails', {
         method: 'POST',
