@@ -154,7 +154,7 @@ def buscarCards(driver):
                     "company_id": str(uuid.uuid4()),
                     "company_name": company_name[i].text,
                     "company_email_address": text_lbl_modal_solicitud_email,
-                    "company_departament": company_departament.text,
+                    "company_department": company_departament.text,
                     "company_city": company_city.text,
                 }
 
