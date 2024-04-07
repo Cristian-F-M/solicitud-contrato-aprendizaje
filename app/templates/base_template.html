@@ -4,6 +4,8 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description"
+        content="Search cm is designed so that you can search for emails from the Apprendizaje page and send them to companies to request a learning contract">
     <link rel="icon" href="{{ url_for('static', filename='images/favicon.ico') }}">
     {% block other_accessories %}
     {% endblock other_accessories %}
@@ -20,7 +22,7 @@
 
     </main>
 
-{%  include 'components/alert.html' %}
+    {% include 'components/alert.html' %}
 
 </body>
 
