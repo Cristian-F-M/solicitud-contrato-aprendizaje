@@ -11,4 +11,4 @@ app/data/*.json
 app/static/files/*
 !app/data/locations.json
 !app/data/cities.json
-!app/data/departaments.json
+!app/data/departments.json
