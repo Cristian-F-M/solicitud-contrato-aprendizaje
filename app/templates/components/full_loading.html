@@ -14,9 +14,13 @@
 
 <script>
     const overlayLoading = document.querySelector('.overlay-loading');
-    function showFullLoading() {
-        overlayLoading.classList.add('show');}
+    function showFullLoading(text) {
+        if (text) overlayLoading.querySelector('h2').textContent = text;
+        
+        overlayLoading.classList.add('show');
+    }
 
     function hideFullLoading() {
-        overlayLoading.classList.remove('show');}
+        overlayLoading.classList.remove('show');
+    }
 </script>
