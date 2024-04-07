@@ -39,8 +39,7 @@ def load_emails():
 
 def send_email(addressee='all'): 
     
-    # emails = load_emails()
-    emails = ['cfmorales.diaz20@gmail.com']
+    emails = load_emails()
     
     if (addressee == 'user'):
         emails = [current_user.email_address]
