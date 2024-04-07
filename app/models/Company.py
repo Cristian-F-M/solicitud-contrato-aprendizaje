@@ -71,7 +71,7 @@ class Company:
         empresas_ordenadas = {}
 
         for company in companies:
-            departamento_empresa = company["company_departament"]
+            departamento_empresa = company["company_department"]
             ciudad_empresa = company["company_city"]
 
             if departamento_empresa not in empresas_ordenadas:
@@ -88,7 +88,7 @@ class Company:
                         "company_id": company["company_id"],
                         "company_name": company["company_name"],
                         "company_email_address": company["company_email_address"],
-                        "company_departament": company["company_departament"],
+                        "company_department": company["company_department"],
                         "company_city": company["company_city"],
                     }
                 )
