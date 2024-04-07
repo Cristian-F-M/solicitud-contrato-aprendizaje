@@ -8,6 +8,7 @@ import uuid
 import time
 from app.models.Location import Location
 import json
+from app.decorators.dev_tools import dev_tools
 
 bp = Blueprint("location", __name__)
 
@@ -21,6 +22,7 @@ def get_all_departments():
 
 @bp.route("/Location/City/", methods=["GET"])
 @login_required
+@dev_tools
 def get_all_cities():
     cities = Location.get_all_cities()
     return cities
@@ -30,6 +32,7 @@ def get_all_cities():
 
 
 @bp.route("/Location/Send-to/", methods=["POST"])
+
 def add_send_to():
     data = request.get_json()
 

@@ -52,7 +52,21 @@ buttonSearchEmails.addEventListener('click', async () => {
 
     data = await searchEmails();
 
-    const { information, companies } = data
+    const { res } = data
+    let { status, msg } = res
+
+    if (!status) {
+        hideFullLoading()
+        msg = msg || 'An error occurred while searching for emails'
+        createMessage(msg, true)
+        buttonSearchEmails.disabled = false
+        searching = false
+        return
+    }
+
+
+    const { data_companies, } = data
+    const { information, companies } = data_companies
 
 
     tbodyTableCompanies.innerHTML = ''

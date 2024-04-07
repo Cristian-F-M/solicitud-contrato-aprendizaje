@@ -6,7 +6,7 @@ from app.caprendizaje.app import Iniciar
 from flask_login import current_user
 import uuid
 import time
-
+from app.decorators.dev_tools import dev_tools, dev_tools_fetch
 
 bp = Blueprint("company", __name__)
 
@@ -21,6 +21,7 @@ def get_company(company_id):
 
 
 @bp.route("/company/remove/<string:company_id>")
+@dev_tools
 def remove_company_blacklist(company_id):
     Company.remove_company_blacklist(company_id)
     print(company_id)
@@ -28,7 +29,9 @@ def remove_company_blacklist(company_id):
     db.session.commit()
     return redirect(url_for("user.view_user_settings", tag="blacklist"))
 
+
 @bp.route("/company/add/<string:company_id>")
+@dev_tools
 def add_company_blacklist(company_id):
     
     company = Company.get_company_by_id(company_id)
@@ -73,6 +76,7 @@ def add_company_blacklist(company_id):
 
 
 @bp.route('/Company/Search-Emails', methods=["POST"])
+@dev_tools_fetch
 def search_emails():
     time.sleep(3)
     Company.init_companies()
@@ -82,6 +86,7 @@ def search_emails():
 
 
 @bp.route("/company-search/remove/<string:company_id>")
+@dev_tools
 def remove_company_blacklist_search(company_id):
     Company.remove_company_blacklist(company_id)
     Black_list.query.filter_by(company_id=company_id).delete()

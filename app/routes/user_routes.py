@@ -2,11 +2,12 @@ from app import db
 from flask import Blueprint, render_template, request, redirect, url_for, flash
 from flask_login import login_required, current_user
 import re
+from app.decorators.dev_tools import dev_tools, dev_tools_fetch
 from app.models.User import User
 from app.models.Mail import Mail
 from app.models.Company import Company
 from app.models.Location import Location
-from app.caprendizaje.send_emails import load_emails, send_email
+from app.caprendizaje.send_emails import send_email
 
 
 bp = Blueprint("user", __name__)
@@ -43,6 +44,7 @@ def view_user_send_emails():
 
 
 @bp.route("/User/Send-emails", methods=["POST"])
+@dev_tools_fetch
 def send_emails():
     request_json = request.json
     send_to = request_json["send_to"]
@@ -51,6 +53,7 @@ def send_emails():
     return data
 
 @bp.route("/User/Account", methods=["POST"])
+@dev_tools
 def save_account():
     email_address = request.form["email_address"]
     google_password = request.form["google_password"]
@@ -91,6 +94,7 @@ def save_account():
 
 @bp.route("/User/Mail", methods=["POST"])
 @login_required
+@dev_tools
 def save_mail():
     mail_subject = request.form["subject"]
     mail_content = request.form["content"]
@@ -126,6 +130,7 @@ def save_mail():
 
 @bp.route("/User/File", methods=["POST"])
 @login_required
+@dev_tools
 def save_file():
     file = request.files["mail_file"]
 

@@ -284,6 +284,8 @@ function updateContainerLocations(overlayFilter) {
 sendEmails.addEventListener('click', async () => {
     let response = await send_emails()
 
+    if (response == null) return
+
     if (!response.status) {
         let msg = response.message ? response.message : 'An error occurred while processing the request'
         createMessage(msg, true)
@@ -297,10 +299,21 @@ async function send_emails() {
     let result = await sendApi({
         "send_to": "user"
     })
-    let response = confirm('We have sent you an example email so you can review the final result. Upon confirmation, the emails will be sent to all companies. ')
+
+    const response = await result.json()
+    let { res } = response
+    let { msg, status } = res
+
+    if (!status) {
+        createMessage(msg, true)
+        return 
+    }
+    
+
+    res = confirm('We have sent you an example email so you can review the final result. Upon confirmation, the emails will be sent to all companies. ')
 
 
-    if (!response) {
+    if (!res) {
         return
     }
 
@@ -310,7 +323,7 @@ async function send_emails() {
 
     response = await result.json()
 
-    await new Promise(resolve => setTimeout(resolve, 2000))
+    // await new Promise(resolve => setTimeout(resolve, 2000))
 
     return response
 }
@@ -327,6 +340,8 @@ async function sendApi(data) {
         },
         body: JSON.stringify(data)
     })
+
+    await new Promise(resolve => setTimeout(resolve, 2000))
 
     sendEmails.disabled = false
     hideFullLoading()
