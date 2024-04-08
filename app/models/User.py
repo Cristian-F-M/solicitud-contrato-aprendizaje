@@ -13,6 +13,7 @@ class User(db.Model, UserMixin):
     user_role_id = db.Column(
         db.Integer, db.ForeignKey("roles.role_id"), nullable=False, default=1
     )
+    user_role = db.relationship("Role")
     email_address = db.Column(db.String(50), nullable=True)
     google_password = db.Column(db.String(150), nullable=True)
     caprendizaje_user = db.Column(db.String(25), nullable=True)
