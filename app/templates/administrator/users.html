@@ -95,7 +95,7 @@
                             </li>
                             <span class="separator"></span>
                             <li>
-                                <a href="#Delete-{{ user.user_id }}">
+                                <a href="{{ url_for('administrator.delete_user', user_id=user.user_id) }}">
                                     <i>
                                         <svg width="25" height="25" fill="none" stroke="currentColor"
                                             stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
