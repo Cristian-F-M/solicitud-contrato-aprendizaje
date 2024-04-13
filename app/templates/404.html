@@ -4,16 +4,50 @@
 - Not found
 {% endblock title %}
 
-{% block accessories %}
+{% block other_accessories %}
+<link rel="stylesheet" href="{{ url_for('static', filename='css/app.css') }}">
 <style>
-main{
-    display: flex;
-    align-items: center;
-    justify-content: center;
-}
+    main {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+        gap: 10px;
+
+        h1 {
+            margin: 0;
+            font-size: 40px;
+        }
+
+        button{
+            padding: 10px 50px;
+            background-color: #555;
+            font-size: 16px;
+            border: 0;
+            border-radius: 4px;
+            transition: background-color .2s;
+
+            &:hover{
+                background-color: #5555;
+                box-shadow: 0 0 5px 0 #fff4;
+            }
+        }
+    }
 </style>
-{% endblock accessories %}
+{% endblock other_accessories %}
 
 {% block content %}
-<h1 style="margin: 0; font-size: 40px;">Not found :(</h1>
+<h1>Not found :(</h1>
+<button>Go back</button>
+
+<script>
+    const $goBack = document.querySelector('button')
+    
+    $goBack.addEventListener('click', (evt) => {
+        evt.preventDefault()
+        window.history.back()
+    })
+
+</script>
+
 {% endblock content %}
