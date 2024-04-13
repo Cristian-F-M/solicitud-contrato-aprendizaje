@@ -51,7 +51,7 @@ def login():
 
 
     flash(["information", "You are logged in"], "flash")
-    if user.user_role_id > 2:
+    if user.user_role_id == 2:
         return redirect(url_for("administrator.view_dashboard"))
 
     return redirect(url_for("user.view_dashboard"))
