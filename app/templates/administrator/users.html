@@ -3,6 +3,10 @@
 {% block content_administrator_dashboard %}
 <h2>Users</h2>
 
+{% block other_accessories %}
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/administrator_users.css') }}">
+{% endblock other_accessories %}
+
 <div class="container-actions scroll-min">
     <ul>
         <li>
@@ -39,7 +43,7 @@
         </li>
         <span class="separator"></span>
     </ul>
-    
+
 </div>
 
 
@@ -81,14 +85,14 @@
                             <li>
                                 <a href="#Edit-{{ user.user_id }}">
                                     <i>
-                                        <svg width="25" height="25" fill="none" stroke="currentColor" stroke-linecap="round"
-                                        stroke-linejoin="round" stroke-width="2"
-                                        class="icon icon-tabler icons-tabler-outline icon-tabler-user-edit"
-                                        viewBox="0 0 24 24">
-                                        <path stroke="none" d="M0 0h24v24H0z" />
-                                        <path
-                                            d="M8 7a4 4 0 1 0 8 0 4 4 0 0 0-8 0M6 21v-2a4 4 0 0 1 4-4h3.5M18.42 15.61a2.1 2.1 0 0 1 2.97 2.97L18 22h-3v-3l3.42-3.39z" />
-                                    </svg>
+                                        <svg width="25" height="25" fill="none" stroke="currentColor"
+                                            stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                                            class="icon icon-tabler icons-tabler-outline icon-tabler-user-edit"
+                                            viewBox="0 0 24 24">
+                                            <path stroke="none" d="M0 0h24v24H0z" />
+                                            <path
+                                                d="M8 7a4 4 0 1 0 8 0 4 4 0 0 0-8 0M6 21v-2a4 4 0 0 1 4-4h3.5M18.42 15.61a2.1 2.1 0 0 1 2.97 2.97L18 22h-3v-3l3.42-3.39z" />
+                                        </svg>
                                     </i>
                                     <span>Edit</span>
                                 </a>
@@ -117,4 +121,32 @@
         </tbody>
     </table>
 </div>
+
+<div class="overlay-add-user">
+    <div class="add-user">
+        <header>
+            <h3>Add new user</h3>
+            <i>
+                <svg width="24" height="24" fill="none" stroke="currentColor" stroke-linecap="round"
+                    stroke-linejoin="round" stroke-width="2"
+                    class="icon icon-tabler icons-tabler-outline icon-tabler-user-plus" viewBox="0 0 24 24">
+                    <path stroke="none" d="M0 0h24v24H0z" />
+                    <path d="M8 7a4 4 0 1 0 8 0 4 4 0 0 0-8 0M16 19h6M19 16v6M6 21v-2a4 4 0 0 1 4-4h4" />
+                </svg>
+            </i>
+        </header>
+        <main>
+            <form action="">
+                <div class="container-input">
+                    <input type="email" id="user-email">
+                    <label for="user-email">User email</label>
+                </div>
+                <div class="container-button">
+                    <button>Add</button>
+                </div>
+            </form>
+        </main>
+    </div>
+</div>
+
 {% endblock content_administrator_dashboard %}
