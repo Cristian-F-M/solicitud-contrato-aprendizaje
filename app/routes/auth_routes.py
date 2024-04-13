@@ -1,18 +1,11 @@
-from app import db
 from flask import Blueprint, render_template, request, redirect, url_for, flash
 from flask_login import (
-    login_required,
     logout_user,
     login_user,
     current_user,
-    login_remembered,
 )
-from flask import Blueprint, render_template
-from sqlalchemy.exc import IntegrityError
-import os
 from app.models.User import User
 from flask_bcrypt import Bcrypt
-from dotenv import load_dotenv
 
 
 bp = Blueprint("auth", __name__)
