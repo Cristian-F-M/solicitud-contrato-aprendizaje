@@ -1,1 +1,145 @@
 {% extends "base_template.html" %}
+
+{% block title %}
+- Dashboard
+{% endblock title %}
+
+
+{% block other_accessories %}
+<link rel="stylesheet" href="{{ url_for('static', filename='css/administrator_dashboard.css') }}">
+<script src="{{ url_for('static', filename='js/administrator_dashboard.js')}}" defer></script>
+{% endblock other_accessories %}
+
+{% block content %}
+<header class="header">
+    <div class="container-logo">
+        <a href="{{ url_for('administrator.view_dashboard') }}">
+            <img src="{{ url_for('static', filename='images/logo_cm_minimalista.webp') }}" alt="">
+        </a>
+    </div>
+    <h1>Search CM</h1>
+</header>
+
+
+<div class="main">
+    <div class="container-left-menu">
+        <nav class="actions">
+            <ul>
+                <li>
+                    <a href="{{ url_for('administrator.view_users') }}">
+                        <i>
+                            <svg width="24" height="24" fill="none" stroke="currentColor" stroke-linecap="round"
+                                stroke-linejoin="round" stroke-width="2"
+                                class="icon icon-tabler icons-tabler-outline icon-tabler-users" viewBox="0 0 24 24">
+                                <path stroke="none" d="M0 0h24v24H0z" />
+                                <path
+                                    d="M5 7a4 4 0 1 0 8 0 4 4 0 1 0-8 0M3 21v-2a4 4 0 0 1 4-4h4a4 4 0 0 1 4 4v2M16 3.13a4 4 0 0 1 0 7.75M21 21v-2a4 4 0 0 0-3-3.85" />
+                            </svg>
+                        </i>
+                        <span>Users</span>
+                    </a>
+                    <div class="tag-info">
+                        <span class="arrow"></span>
+                        <span>View all users</span>
+                    </div>
+                </li>
+                {# <li>
+                    <a href="#Administrator">
+                        <i>
+                            <svg width="24" height="24" fill="none" stroke="currentColor" stroke-linecap="round"
+                                stroke-linejoin="round" stroke-width="2"
+                                class="icon icon-tabler icons-tabler-outline icon-tabler-briefcase-2"
+                                viewBox="0 0 24 24">
+                                <path stroke="none" d="M0 0h24v24H0z" />
+                                <path
+                                    d="M3 9a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2v9a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V9zM8 7V5a2 2 0 0 1 2-2h4a2 2 0 0 1 2 2v2" />
+                            </svg>
+                        </i>
+                        <span>Administrators</span>
+                    </a>
+                    <div class="tag-info">
+                        <span class="arrow"></span>
+                        <span>View all Administrators</span>
+                    </div>
+                </li> #}
+                <li>
+                    <a href="{{ url_for('user.view_dashboard') }}" target="_blank">
+                        <i>
+                            <svg width="24" height="24" fill="none" stroke="currentColor" stroke-linecap="round"
+                                stroke-linejoin="round" stroke-width="2"
+                                class="icon icon-tabler icons-tabler-outline icon-tabler-eye-search"
+                                viewBox="0 0 24 24">
+                                <path stroke="none" d="M0 0h24v24H0z" />
+                                <path d="M10 12a2 2 0 1 0 4 0 2 2 0 0 0-4 0" />
+                                <path
+                                    d="M12 18c-.328 0-.652-.017-.97-.05C7.858 17.618 5.18 15.635 3 12c2.4-4 5.4-6 9-6 3.465 0 6.374 1.853 8.727 5.558M15 18a3 3 0 1 0 6 0 3 3 0 1 0-6 0M20.2 20.2 22 22" />
+                            </svg>
+                        </i>
+                        <span>View as user</span>
+                    </a>
+                    <div class="tag-info">
+                        <span class="arrow"></span>
+                        <span>View as user</span>
+                    </div>
+                </li>
+            </ul>
+        </nav>
+        <nav class="user">
+            <ul>
+                <li class="">
+                    <a href="#Profile" aria-label="logout">
+                        <i class="">
+                            <svg width="25" height="25" fill="none" stroke="currentColor" stroke-linecap="round"
+                                stroke-linejoin="round" stroke-width="2"
+                                class="icon icon-tabler icons-tabler-outline icon-tabler-user-circle"
+                                viewBox="0 0 24 24">
+                                <path stroke="none" d="M0 0h24v24H0z" />
+                                <path d="M3 12a9 9 0 1 0 18 0 9 9 0 1 0-18 0" />
+                                <path
+                                    d="M9 10a3 3 0 1 0 6 0 3 3 0 1 0-6 0M6.168 18.849A4 4 0 0 1 10 16h4a4 4 0 0 1 3.834 2.855" />
+                            </svg>
+                        </i>
+                        <span>Profile</span>
+                    </a>
+                    <div class="tag-info">
+                        <span class="arrow"></span>
+                        <span>Go to profile</span>
+                    </div>
+                </li>
+                <li class="">
+                    <a href="{{ url_for('auth.logout') }}" aria-label="logout">
+                        <i class="">
+                            <svg width="25" height="25" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+                                stroke-width="2" stroke-linecap="round" stroke-linejoin="round"
+                                class="icon icon-tabler icons-tabler-outline icon-tabler-logout-2">
+                                <path stroke="none" d="M0 0h24v24H0z" fill="none" />
+                                <path
+                                    d="M10 8v-2a2 2 0 0 1 2 -2h7a2 2 0 0 1 2 2v12a2 2 0 0 1 -2 2h-7a2 2 0 0 1 -2 -2v-2" />
+                                <path d="M15 12h-12l3 -3" />
+                                <path d="M6 15l-3 -3" />
+                            </svg>
+                        </i>
+                        <span>Logout</span>
+                    </a>
+                    <div class="tag-info">
+                        <span class="arrow"></span>
+                        <span>Logout</span>
+                    </div>
+                </li>
+            </ul>
+        </nav>
+        <div class="open-close-left-menu">
+            <span></span>
+            <span></span>
+        </div>
+    </div>
+
+
+    <div class="container-content scroll-min">
+        {% block content_administrator_dashboard %}
+        <h2 style="margin: auto; text-align: center; font-size: 25px;letter-spacing: 1px;">Please selecte a menu option</h2>
+        {% endblock content_administrator_dashboard %}
+    </div>
+
+</div>
+{% endblock content %}
