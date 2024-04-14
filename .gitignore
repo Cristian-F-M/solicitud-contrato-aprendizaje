@@ -12,5 +12,3 @@ app/static/files/*
 !app/data/locations.json
 !app/data/cities.json
 !app/data/departments.json
-app/static/js/*.js
-!app/static/js/*.min.js
