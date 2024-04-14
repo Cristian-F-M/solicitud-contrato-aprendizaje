@@ -78,7 +78,14 @@ $closesOverlay.forEach(close => {
 document.addEventListener('keyup', ({ key }) => {
     if (key == "Escape") {
         $overlays.forEach(overlay => {
-            if (overlay.classList.contains('show')) return overlay.classList.remove('show') 
+            if (overlay.classList.contains('show')) return overlay.classList.remove('show')
         })
     }
+})
+
+
+$overlays.forEach(overlay => {
+    overlay.addEventListener('click', ({ target }) => {
+        if (overlay === target) return overlay.classList.remove('show')
+    })
 })
