@@ -124,7 +124,7 @@
 </div>
 
 <div class="overlay add-user" data-id="add-new-user">
-    <div class="add-user">
+    <div class="main-overlay add-user">
         <div class="close">
             <i data-id="add-new-user">
                 <svg svg width="24" height="24" fill="none" stroke="currentColor" stroke-linecap="round"
@@ -158,10 +158,37 @@
             </form>
         </main>
     </div>
+    <h4 class="information-close">You can use <kbd>Esc</kbd> to close this window</h4>
 </div>
 
 <div class="overlay search-user" data-id="search-user">
-    <div class="search-user"></div>
+    <div class="main-overlay search-user">
+        <div class="close">
+            <i data-id="search-user">
+                <svg svg width="24" height="24" fill="none" stroke="currentColor" stroke-linecap="round"
+                    stroke-linejoin="round" stroke-width="2" class="icon icon-tabler icons-tabler-outline icon-tabler-x"
+                    viewBox="0 0 24 24">
+                    <path stroke="none" d="M0 0h24v24H0z" />
+                    <path d="M18 6 6 18M6 6l12 12" />
+                </svg>
+            </i>
+        </div>
+        <header>
+            <h3>Search user</h3>
+            <i>
+                <svg width="40" height="40" fill="none" stroke="currentColor" stroke-linecap="round"
+                    stroke-linejoin="round" stroke-width="2"
+                    class="icon icon-tabler icons-tabler-outline icon-tabler-user-plus" viewBox="0 0 24 24">
+                    <path stroke="none" d="M0 0h24v24H0z" />
+                    <path d="M8 7a4 4 0 1 0 8 0 4 4 0 0 0-8 0M16 19h6M19 16v6M6 21v-2a4 4 0 0 1 4-4h4" />
+                </svg>
+            </i>
+        </header>
+        <main>
+            Search
+        </main>
+    </div>
+    <h4 class="information-close">You can use <kbd>Esc</kbd> to close this window</h4>
 </div>
 
 {% endblock content_administrator_dashboard %}
