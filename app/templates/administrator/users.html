@@ -4,13 +4,14 @@
 <h2>Users</h2>
 
 {% block other_accessories %}
-    <link rel="stylesheet" href="{{ url_for('static', filename='css/administrator_users.css') }}">
+<link rel="stylesheet" href="{{ url_for('static', filename='css/administrator_users.css') }}">
+<script src="{{ url_for('static', filename='js/administrator_users.js') }}" defer></script>
 {% endblock other_accessories %}
 
 <div class="container-actions scroll-min">
     <ul>
         <li>
-            <a href="#Add-user">
+            <a href="#Add-user" id="add-new-user">
                 <i>
                     <svg width="24" height="24" fill="none" stroke="currentColor" stroke-linecap="round"
                         stroke-linejoin="round" stroke-width="2"
@@ -26,7 +27,7 @@
         </li>
         <span class="separator"></span>
         <li>
-            <a href="#Search-user">
+            <a href="#Search-user" id="search-user">
                 <i>
                     <svg width="24" height="24" fill="none" stroke="currentColor" stroke-linecap="round"
                         stroke-linejoin="round" stroke-width="2"
@@ -122,12 +123,22 @@
     </table>
 </div>
 
-<div class="overlay-add-user">
+<div class="overlay add-user" data-id="add-new-user">
     <div class="add-user">
+        <div class="close">
+            <i data-id="add-new-user">
+                <svg svg width="24" height="24" fill="none" stroke="currentColor" stroke-linecap="round"
+                    stroke-linejoin="round" stroke-width="2" class="icon icon-tabler icons-tabler-outline icon-tabler-x"
+                    viewBox="0 0 24 24">
+                    <path stroke="none" d="M0 0h24v24H0z" />
+                    <path d="M18 6 6 18M6 6l12 12" />
+                </svg>
+            </i>
+        </div>
         <header>
             <h3>Add new user</h3>
             <i>
-                <svg width="24" height="24" fill="none" stroke="currentColor" stroke-linecap="round"
+                <svg width="40" height="40" fill="none" stroke="currentColor" stroke-linecap="round"
                     stroke-linejoin="round" stroke-width="2"
                     class="icon icon-tabler icons-tabler-outline icon-tabler-user-plus" viewBox="0 0 24 24">
                     <path stroke="none" d="M0 0h24v24H0z" />
@@ -147,6 +158,10 @@
             </form>
         </main>
     </div>
+</div>
+
+<div class="overlay search-user" data-id="search-user">
+    <div class="search-user"></div>
 </div>
 
 {% endblock content_administrator_dashboard %}
